@@ -1,6 +1,7 @@
 import * as Factory from "./factory.js";
 import * as Material from "./material.js";
 import Duration from "./duration.js";
+import {EXT} from "./factory.js";
 
 class Recipe {
     materials = [];
@@ -772,3 +773,189 @@ export const RTA = [
 ]
 
 // -------------------------- Consumables (basic) ------------------------------
+export const DW = [
+    new Recipe(Material.DW, 7, "2h 24m")
+        .factory(Factory.FP)
+        .material(Material.H2O, 10),
+    new Recipe(Material.DW, 10, "4h 48m")
+        .factory(Factory.FP)
+        .material(Material.H2O, 10)
+        .material(Material.PG, 1)
+]
+
+export const HSS = [
+    new Recipe(Material.HSS, 20, "1d")
+        .factory(Factory.CLF)
+        .material(Material.NL, 5)
+        .material(Material.BLE, 1)
+        .material(Material.SEN, 5)
+        .material(Material.PCB, 5)
+]
+
+export const FIM = [
+    new Recipe(Material.FIM, 2, "12h")
+        .factory(Factory.FP)
+        .material(Material.RAT, 2)
+        .material(Material.HER, 1)
+]
+
+export const PDA = [
+    new Recipe(Material.PDA, 32, "14h 24m")
+        .factory(Factory.APF)
+        .material(Material.HPC, 2)
+        .material(Material.LD, 1)
+]
+
+export const OVE = [
+    new Recipe(Material.OVE, 20, "14h 24m")
+        .factory(Factory.BMP)
+        .material(Material.PE, 100)
+        .material(Material.PG, 25),
+    new Recipe(Material.OVE, 20, "7h 12m")
+        .factory(Factory.BMP)
+        .material(Material.RCO, 1)
+        .material(Material.PE, 50),
+    new Recipe(Material.OVE, 30, "7h 12m")
+        .factory(Factory.BMP)
+        .material(Material.COT, 1)
+        .material(Material.PG, 10)
+]
+
+export const RAT = [
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.GRN, 1)
+        .material(Material.ALG, 1)
+        .material(Material.VEG, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.GRN, 1)
+        .material(Material.ALG, 1)
+        .material(Material.NUT, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MUS, 1)
+        .material(Material.VEG, 1)
+        .material(Material.GRN, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MAI, 1)
+        .material(Material.ALG, 1)
+        .material(Material.VEG, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MUS, 1)
+        .material(Material.VEG, 1)
+        .material(Material.MAI, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MUS, 1)
+        .material(Material.NUT, 1)
+        .material(Material.GRN, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MAI, 1)
+        .material(Material.BEA, 1)
+        .material(Material.NUT, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MAI, 1)
+        .material(Material.BEA, 1)
+        .material(Material.VEG, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MUS, 1)
+        .material(Material.NUT, 1)
+        .material(Material.MAI, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.GRN, 1)
+        .material(Material.BEA, 1)
+        .material(Material.NUT, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.MAI, 1)
+        .material(Material.ALG, 1)
+        .material(Material.NUT, 1),
+    new Recipe(Material.RAT, 10, "6h")
+        .factory(Factory.FP)
+        .material(Material.GRN, 1)
+        .material(Material.BEA, 1)
+        .material(Material.VEG, 1),
+]
+
+export const LC = [
+    new Recipe(Material.LC, 10, "19h 12m")
+        .factory(Factory.CLF)
+        .material(Material.SIL, 2)
+        .material(Material.BLE, 1)
+        .material(Material.HD, 10)
+        .material(Material.PCB, 10)
+]
+
+export const MEA = [
+    new Recipe(Material.MEA, 2, "15h 36m")
+        .factory(Factory.FP)
+        .material(Material.FIM, 2)
+        .material(Material.MTP, 1)
+]
+
+export const WS = [
+    new Recipe(Material.WS, 20, "1d 19h")
+        .factory(Factory.APF)
+        .material(Material.DA, 1)
+        .material(Material.BWS, 1)
+]
+
+export const EXO = [
+    new Recipe(Material.EXO, 10, "4h 5m")
+        .factory(Factory.BMP)
+        .material(Material.OVE, 10)
+        .material(Material.AL, 1)
+        .material(Material.MFK, 1),
+    new Recipe(Material.EXO, 10, "3h 36m")
+        .factory(Factory.BMP)
+        .material(Material.OVE, 10)
+        .material(Material.AL, 1)
+        .material(Material.SWF, 1)
+]
+
+export const PT = [
+    new Recipe(Material.PT, 7, "8h 24m")
+        .factory(Factory.BMP)
+        .material(Material.STL, 1)
+        .material(Material.TRN, 1),
+    new Recipe(Material.PT, 5, "8h 24m")
+        .factory(Factory.BMP)
+        .material(Material.STL, 1),
+    new Recipe(Material.PT, 10, "8h 24m")
+        .factory(Factory.BMP)
+        .material(Material.STL, 1)
+        .material(Material.W, 1)
+]
+
+export const HMS = [
+    new Recipe(Material.HMS, 10, "16h 48m")
+        .factory(Factory.CLF)
+        .material(Material.NL, 1)
+        .material(Material.IND, 1)
+        .material(Material.GC, 6)
+]
+
+export const MED = [
+    new Recipe(Material.MED, 16, "19h 12m")
+        .factory(Factory.CHP)
+        .material(Material.PE, 50)
+        .material(Material.AL, 1)
+        .material(Material.COT, 4)
+        .material(Material.HER, 1)
+]
+
+export const SCN = [
+    new Recipe(Material.SCN, 8, "1d 5h")
+        .factory(Factory.EDM)
+        .material(Material.PE, 100)
+        .material(Material.CU, 4)
+]
+
+// -------------------------- Consumables (luxury) ------------------------------
