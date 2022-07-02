@@ -16,7 +16,7 @@ class Recipe {
     }
 
     getAmountPerHour() {
-        return this.amount / this.duration.hourses;
+        return this.amount / this.duration.inFormat(Duration.HOURS);
     }
 
     material(type, amount) {

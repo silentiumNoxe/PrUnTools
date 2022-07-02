@@ -5,6 +5,21 @@
     <title>PrUn Noxe Tools</title>
 </head>
 <body>
-
+    <input id="time" placeholder="time">
+    <div id="seconds"></div>
+    <div id="minutes"></div>
+    <div id="hours"></div>
+    <div id="days"></div>
+    <script type="module">
+        import Duration from "./js/duration.js";
+        document.getElementById("time").addEventListener("keyup", (event) => {
+            console.log("enter time -", event.target.value);
+            const duration = new Duration(event.target.value)
+            document.getElementById("seconds").innerText = "Seconds: "+duration.getSeconds();
+            document.getElementById("minutes").innerText = "Minutes: "+duration.getMinutes();
+            document.getElementById("hours").innerText = "Hours: "+duration.getHours();
+            document.getElementById("days").innerText = "Days: "+duration.getDays();
+        })
+    </script>
 </body>
 </html>
