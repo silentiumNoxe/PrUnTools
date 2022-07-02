@@ -16,11 +16,20 @@ class Recipe {
         this.duration = new Duration(duration);
     }
 
+    /**
+     * @param type {Material}
+     * @param amount {number}
+     * @return Recipe
+     * */
     material(type, amount) {
         this.materials.push({type, amount});
         return this;
     }
 
+    /**
+     * @param type {Factory}
+     * @return Recipe
+     * */
     factory(type) {
         this.targetFactory = type;
         return this;
@@ -1042,3 +1051,118 @@ export const SC = [
 ]
 
 // -------------------- Elements ------------------------
+export const BE = [
+    new Recipe(Material.BE, 1, "2h 24m")
+        .factory(Factory.AML)
+        .material(Material.BER, 2)
+]
+
+export const CA = [
+    new Recipe(Material.CA, 1, "7h 12m")
+        .factory(Factory.CHP)
+        .material(Material.LST, 1)
+]
+
+export const C = [
+    new Recipe(Material.C, 4, "1d")
+        .factory(Factory.INC)
+        .material(Material.HCP, 4),
+    new Recipe(Material.C, 4, "1d")
+        .factory(Factory.INC)
+        .material(Material.MAI, 4),
+    new Recipe(Material.C, 4, "15h 50m")
+        .factory(Factory.INC)
+        .material(Material.HCP, 4)
+        .material(Material.MAI, 2),
+    new Recipe(Material.C, 4, "1d")
+        .factory(Factory.INC)
+        .material(Material.GRN, 4),
+    new Recipe(Material.C, 4, "15h 50m")
+        .factory(Factory.INC)
+        .material(Material.HCP, 4)
+        .material(Material.GRN, 2),
+    new Recipe(Material.C, 4, "7h 55m")
+        .factory(Factory.INC)
+        .material(Material.HCP, 4)
+        .material(Material.GRN, 2)
+        .material(Material.MAI, 2)
+]
+
+export const CL = [
+    new Recipe(Material.CL, 2, "13h 55m")
+        .factory(Factory.CHP)
+        .material(Material.HAL, 3)
+        .material(Material.H2O, 1)
+]
+
+export const ES = [
+    new Recipe(Material.ES, 10, "12h")
+        .factory(Factory.EEP)
+        .material(Material.LES, 1)
+]
+
+export const I = [
+    new Recipe(Material.I, 1, "4h 48m")
+        .factory(Factory.BMP)
+        .material(Material.CLI, 3)
+]
+
+export const MG = [
+    new Recipe(Material.MG, 6, "2h 53m")
+        .factory(Factory.BMP)
+        .material(Material.MGS, 1)
+]
+
+export const NA = [
+    new Recipe(Material.NA, 2, "13h 55m")
+        .factory(Factory.CHP)
+        .material(Material.HAL, 3)
+        .material(Material.H2O, 1)
+]
+
+export const S = [
+    new Recipe(Material.S, 6, "7h 12m")
+        .factory(Factory.SME)
+        .material(Material.SCR, 1)
+        .material(Material.O, 1)
+]
+
+export const TA = [
+    new Recipe(Material.TA, 1, "15h 36m")
+        .factory(Factory.AML)
+        .material(Material.TAI, 2)
+]
+
+export const TC = [
+    new Recipe(Material.TC, 1, "16h 19m")
+        .factory(Factory.TNP)
+        .material(Material.TCO, 1)
+]
+
+export const ZR = [
+    new Recipe(Material.ZR, 1, "14h 24m")
+        .factory(Factory.AML)
+        .material(Material.ZIR, 2)
+]
+
+// -------------------- Fuels --------------------------
+export const FF = [
+    new Recipe(Material.FF, 100, "3h 36m")
+        .factory(Factory.REF)
+        .material(Material.HE3, 2)
+        .material(Material.H, 4)
+]
+
+export const SF = [
+    new Recipe(Material.SF, 150, "9h 36m")
+        .factory(Factory.REF)
+        .material(Material.AMM, 1)
+        .material(Material.NAB, 5),
+    new Recipe(Material.SF, 100, "3h 36m")
+        .factory(Factory.REF)
+        .material(Material.AMM, 1)
+        .material(Material.GAL, 2)
+        .material(Material.H, 3)
+]
+
+// -------------------- Gases ----------------------------
