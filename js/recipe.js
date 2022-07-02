@@ -635,22 +635,32 @@ export const TRU = [
 ]
 
 // ------------------- Construction Prefabs --------------------
-export const HSE = [
-    new Recipe(Material.HSE, 2, "15h 36m")
-        .factory(Factory.PP3)
-        .material(Material.LSE, 2)
-        .material(Material.TCS, 1)
+export const ABH = [
+    new Recipe(Material.ABH, 2, "16h 48m")
+        .factory(Factory.PP4)
+        .material(Material.RBH, 2)
+        .material(Material.NR, 125)
 ]
 
-export const BSE = [
-    new Recipe(Material.BSE, 1, "6h")
-        .factory(Factory.PP2)
-        .material(Material.AL, 1)
-        .material(Material.LST, 2),
-    new Recipe(Material.BSE, 1, "6h")
-        .factory(Factory.PP1)
-        .material(Material.FE, 1)
-        .material(Material.LST, 2)
+export const ADE = [
+    new Recipe(Material.ADE, 2, "14h 24m")
+        .factory(Factory.PP4)
+        .material(Material.LDE, 2)
+        .material(Material.KV, 2)
+]
+
+export const ASE = [
+    new Recipe(Material.ASE, 1, "13h 12m")
+        .factory(Factory.PP4)
+        .material(Material.RSE, 1)
+        .material(Material.TI, 2)
+]
+
+export const ATA = [
+    new Recipe(Material.ATA, 1, "13h 12m")
+        .factory(Factory.PP4)
+        .material(Material.RTA, 1)
+        .material(Material.NG, 1)
 ]
 
 export const BBH = [
@@ -673,6 +683,17 @@ export const BDE = [
         .material(Material.PE, 150)
 ]
 
+export const BSE = [
+    new Recipe(Material.BSE, 1, "6h")
+        .factory(Factory.PP2)
+        .material(Material.AL, 1)
+        .material(Material.LST, 2),
+    new Recipe(Material.BSE, 1, "6h")
+        .factory(Factory.PP1)
+        .material(Material.FE, 1)
+        .material(Material.LST, 2)
+]
+
 export const BTA = [
     new Recipe(Material.BTA, 1, "3h 36m")
         .factory(Factory.PP2)
@@ -684,10 +705,17 @@ export const BTA = [
         .material(Material.PE, 50)
 ]
 
-export const LSE = [
-    new Recipe(Material.LSE, 1, "6h")
+export const HSE = [
+    new Recipe(Material.HSE, 2, "15h 36m")
+        .factory(Factory.PP3)
+        .material(Material.LSE, 2)
+        .material(Material.TCS, 1)
+]
+
+export const LBH = [
+    new Recipe(Material.LBH, 1, "6h")
         .factory(Factory.PP2)
-        .material(Material.PG, 120)
+        .material(Material.PE, 35)
         .material(Material.AL, 3)
 ]
 
@@ -698,6 +726,13 @@ export const LDE = [
         .material(Material.AL, 3)
 ]
 
+export const LSE = [
+    new Recipe(Material.LSE, 1, "6h")
+        .factory(Factory.PP2)
+        .material(Material.PG, 120)
+        .material(Material.AL, 3)
+]
+
 export const LTA = [
     new Recipe(Material.LTA, 1, "6h")
         .factory(Factory.PP2)
@@ -705,9 +740,35 @@ export const LTA = [
         .material(Material.AL, 3)
 ]
 
-export const LBH = [
-    new Recipe(Material.LBH, 1, "6h")
-        .factory(Factory.PP2)
-        .material(Material.PE, 35)
-        .material(Material.AL, 3)
+export const RBH = [
+    new Recipe(Material.RBH, 1, "9h 36m")
+        .factory(Factory.PP3)
+        .material(Material.BBH, 1)
+        .material(Material.STL, 1)
+        .material(Material.EPO, 50)
 ]
+
+export const RDE = [
+    new Recipe(Material.RDE, 2, "16h 48m")
+        .factory(Factory.PP3)
+        .material(Material.LDE, 1)
+        .material(Material.EPO, 100)
+        .material(Material.KV, 1)
+]
+
+export const RSE = [
+    new Recipe(Material.RSE, 2, "16h 48m")
+        .factory(Factory.PP3)
+        .material(Material.BSE, 2)
+        .material(Material.STL, 1)
+        .material(Material.EPO, 225)
+]
+
+export const RTA = [
+    new Recipe(Material.RTA, 1, "9h 36m")
+        .factory(Factory.PP3)
+        .material(Material.LTA, 1)
+        .material(Material.RG, 6)
+]
+
+// -------------------------- Consumables (basic) ------------------------------
