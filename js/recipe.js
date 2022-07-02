@@ -1166,3 +1166,85 @@ export const SF = [
 ]
 
 // -------------------- Gases ----------------------------
+export const AMM = [
+    new Recipe(Material.AMM, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.AMM, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.AMM, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const AR = [
+    new Recipe(Material.AR, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.AR, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.AR, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const F = [
+    new Recipe(Material.F, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.F, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.F, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const HE = [
+    new Recipe(Material.HE, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.HE, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.HE, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const HE3 = [
+    new Recipe(Material.HE3, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.HE3, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.HE3, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const H = [
+    new Recipe(Material.H, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.H, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.H, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const NE = [
+    new Recipe(Material.NE, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.NE, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.NE, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const N = [
+    new Recipe(Material.N, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.N, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.N, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+export const O = [
+    new Recipe(Material.O, 60, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.O, 60, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.O, 60, "1d")
+        .factory(Factory.RIG),
+]
+
+// --------------------- Liquids -------------------
