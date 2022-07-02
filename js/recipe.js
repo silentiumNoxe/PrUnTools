@@ -15,10 +15,6 @@ class Recipe {
         this.duration = new Duration(duration);
     }
 
-    getAmountPerHour() {
-        return this.amount / this.duration.inFormat(Duration.HOURS);
-    }
-
     material(type, amount) {
         this.materials.push({type, amount});
         return this;
@@ -441,12 +437,27 @@ export const THF = [
 ]
 
 // --------------------- Construction Materials ----------------------
+export const EPO = [
+    new Recipe(Material.EPO, 50, "1d")
+        .factory(Factory.POL)
+        .material(Material.C, 1)
+        .material(Material.H, 1)
+        .material(Material.CL, 1)
+        .material(Material.O, 1)
+]
+
 export const INS = [
     new Recipe(Material.INS, 20, "6h")
         .factory(Factory.PP3)
         .material(Material.PE, 100)
         .material(Material.AR, 1)
         .material(Material.THF, 1)
+]
+
+export const MTC = [
+    new Recipe(Material.MTC, 2, "9h 36m")
+        .factory(Factory.CLR)
+        .material(Material.NCS, 2)
 ]
 
 export const MCG = [
@@ -456,12 +467,54 @@ export const MCG = [
         .material(Material.SIO, 2)
 ]
 
+export const NCS = [
+    new Recipe(Material.NCS, 100, "14h 24m")
+        .factory(Factory.CLR)
+        .material(Material.C, 1)
+]
+
+export const NFI = [
+    new Recipe(Material.NFI, 1200, "19h 12m")
+        .factory(Factory.CLR)
+        .material(Material.C, 10)
+        .material(Material.SI, 2)
+]
+
+export const NG = [
+    new Recipe(Material.NG, 10, "1d 5h")
+        .factory(Factory.GF)
+        .material(Material.GL, 10)
+        .material(Material.NCS, 10)
+]
+
+export const RG = [
+    new Recipe(Material.RG, 10, "1d 7h")
+        .factory(Factory.GF)
+        .material(Material.GL, 10)
+        .material(Material.PG, 15),
+    new Recipe(Material.RG, 10, "1d 4h")
+        .factory(Factory.GF)
+        .material(Material.GL, 10)
+        .material(Material.PG, 15)
+        .material(Material.SEN, 1)
+]
+
 export const SEA = [
     new Recipe(Material.SEA, 30, "7h 12m")
         .factory(Factory.BMP)
         .material(Material.S, 1)
         .material(Material.SI, 1)
         .material(Material.PG, 30)
+]
+
+export const GL = [
+    new Recipe(Material.GL, 10, "16h 48m")
+        .factory(Factory.GF)
+        .material(Material.SIO, 1),
+    new Recipe(Material.GL, 10, "13h 12m")
+        .factory(Factory.GF)
+        .material(Material.SIO, 1)
+        .material(Material.SEN, 1)
 ]
 
 // -------------------- Construction Parts ------------------------
