@@ -1285,3 +1285,96 @@ export const H2O = [
 ]
 
 // ------------------- Metals -----------------------
+export const AL = [
+    new Recipe(Material.AL, 3, "12h")
+        .factory(Factory.SME)
+        .material(Material.ALO, 6)
+        .material(Material.C, 1)
+        .material(Material.O, 1),
+    new Recipe(Material.AL, 4, "14h 24m")
+        .factory(Factory.SME)
+        .material(Material.ALO, 6)
+        .material(Material.O, 1)
+        .material(Material.C, 1)
+        .material(Material.FLX, 1)
+]
+
+export const CU = [
+    new Recipe(Material.CU, 3, "12h")
+        .factory(Factory.SME)
+        .material(Material.CUO, 5)
+        .material(Material.O, 10)
+        .material(Material.SIO, 1)
+]
+
+export const AU = [
+    new Recipe(Material.AU, 2, "10h 48m")
+        .factory(Factory.SME)
+        .material(Material.C, 1)
+        .material(Material.AUO, 3)
+]
+
+export const FE = [
+    new Recipe(Material.FE, 3, "12h")
+        .factory(Factory.SME)
+        .material(Material.FEO, 6)
+        .material(Material.C, 1)
+        .material(Material.O, 1),
+    new Recipe(Material.FE, 4, "14h 24m")
+        .factory(Factory.SME)
+        .material(Material.FEO, 6)
+        .material(Material.C, 1)
+        .material(Material.O, 1)
+        .material(Material.FLX, 1),
+    new Recipe(Material.FE, 1, "15h 36m")
+        .factory(Factory.AML)
+        .material(Material.TAI, 2)
+]
+
+export const LI = [
+    new Recipe(Material.LI, 4, "15h 50m")
+        .factory(Factory.SME)
+        .material(Material.LIO, 10)
+        .material(Material.HAL, 4)
+]
+
+export const SI = [
+    new Recipe(Material.SI, 1, "3h 36m")
+        .factory(Factory.SME)
+        .material(Material.SIO, 3)
+        .material(Material.AL, 1),
+    new Recipe(Material.SI, 1, "2h 53m")
+        .factory(Factory.SME)
+        .material(Material.TS, 4)
+        .material(Material.O, 1)
+        .material(Material.AL, 1),
+    new Recipe(Material.SI, 2, "14h 24m")
+        .factory(Factory.AML)
+        .material(Material.ZIR, 2),
+    new Recipe(Material.SI, 1, "2h 24m")
+        .factory(Factory.AML)
+        .material(Material.BER, 2)
+]
+
+export const STL = [
+    new Recipe(Material.STL, 2, "8h 24m")
+        .factory(Factory.SME)
+        .material(Material.FE, 2)
+        .material(Material.O, 8)
+]
+
+export const TI = [
+    new Recipe(Material.TI, 2, "18h")
+        .factory(Factory.SME)
+        .material(Material.TIO, 4)
+        .material(Material.C, 1)
+        .material(Material.O, 1)
+]
+
+export const W = [
+    new Recipe(Material.W, 1, "14h 24m")
+        .factory(Factory.AML)
+        .material(Material.BTS, 5)
+]
+
+// -------------------- Minerals ---------------------
