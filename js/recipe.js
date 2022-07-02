@@ -959,3 +959,86 @@ export const SCN = [
 ]
 
 // -------------------------- Consumables (luxury) ------------------------------
+export const GIN = [
+    new Recipe(Material.GIN, 4, "15h 36m")
+        .factory(Factory.FER)
+        .material(Material.GRN, 2)
+        .material(Material.DW, 2)
+        .material(Material.ES, 1)
+        .material(Material.AMM, 1)
+]
+
+export const VG = [
+    new Recipe(Material.VG, 20, "1d")
+        .factory(Factory.IVP)
+        .material(Material.VIT, 2)
+        .material(Material.REA, 4)
+        .material(Material.BAC, 2)
+        .material(Material.BL, 2)
+]
+
+export const PWO = [
+    new Recipe(Material.PWO, 20, "7h 12m")
+        .factory(Factory.BMP)
+        .material(Material.COT, 1)
+        .material(Material.PG, 50)
+]
+
+export const COF = [
+    new Recipe(Material.COF, 3, "7h 12m")
+        .factory(Factory.FP)
+        .material(Material.CAF, 1)
+        .material(Material.DW, 3)
+]
+
+export const WIN = [
+    new Recipe(Material.WIN, 10, "19h 12m")
+        .factory(Factory.FER)
+        .material(Material.DW, 20)
+        .material(Material.GRA, 15)
+        .material(Material.REA, 15)
+        .material(Material.AMM, 1)
+]
+
+export const NST = [
+    new Recipe(Material.NST, 4, "12h")
+        .factory(Factory.LAB)
+        .material(Material.ES, 1)
+        .material(Material.ALG, 1)
+        .material(Material.THF, 1)
+]
+
+export const KOM = [
+    new Recipe(Material.KOM, 6, "8h 24m")
+        .factory(Factory.FER)
+        .material(Material.DW, 4)
+        .material(Material.HER, 1)
+        .material(Material.AMM, 1)
+]
+
+export const REP = [
+    new Recipe(Material.REP, 4, "6h")
+        .factory(Factory.BMP)
+        .material(Material.MFK, 1)
+        .material(Material.SFK, 1)
+        .material(Material.INS, 8)
+]
+
+export const ALE = [
+    new Recipe(Material.ALE, 6, "15h 22m")
+        .factory(Factory.FER)
+        .material(Material.GRN, 2)
+        .material(Material.DW, 3)
+        .material(Material.HOP, 1)
+        .material(Material.AMM, 1)
+]
+
+export const SC = [
+    new Recipe(Material.SC, 20, "15h 36m")
+        .factory(Factory.CHP)
+        .material(Material.CA, 2)
+        .material(Material.MG, 1)
+        .material(Material.TA, 1)
+]
+
+// -------------------- Elements ------------------------
