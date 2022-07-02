@@ -1248,3 +1248,40 @@ export const O = [
 ]
 
 // --------------------- Liquids -------------------
+export const HEX = [
+    new Recipe(Material.HEX, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.HEX, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.HEX, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const LES = [
+    new Recipe(Material.LES, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.LES, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.LES, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const BTS = [
+    new Recipe(Material.BTS, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.BTS, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.BTS, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const H2O = [
+    new Recipe(Material.H2O, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.H2O, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.H2O, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+// ------------------- Metals -----------------------
