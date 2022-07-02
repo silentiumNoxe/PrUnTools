@@ -525,6 +525,65 @@ export const AEF = [
         .material(Material.NE, 1)
 ]
 
+export const AIR = [
+    new Recipe(Material.AIR, 1, "2d 12h")
+        .factory(Factory.APF)
+        .material(Material.HCP, 1)
+        .material(Material.NS, 1)
+        .material(Material.H2O, 1)
+        .material(Material.WAI, 1)
+        .material(Material.PCB, 1)
+        .material(Material.SAR, 1)
+        .material(Material.GV, 1)
+        .material(Material.FC, 1)
+        .material(Material.BAC, 1)
+]
+
+export const DEC = [
+    new Recipe(Material.DEC, 1, "12h")
+        .factory(Factory.POL)
+        .material(Material.PG, 150)
+        .material(Material.EPO, 70)
+]
+
+export const FLO = [
+    new Recipe(Material.FLO, 1, "19h 12m")
+        .factory(Factory.FS)
+        .material(Material.AL, 10)
+        .material(Material.STL, 4)
+]
+
+export const FC = [
+    new Recipe(Material.FC, 1, "9h 36m")
+        .factory(Factory.WEL)
+        .material(Material.AL, 1)
+        .material(Material.BSE, 1)
+        .material(Material.HE, 1)
+]
+
+export const FLP = [
+    new Recipe(Material.FLP, 6, "12h")
+        .factory(Factory.WEL)
+        .material(Material.FE, 1)
+        .material(Material.AL, 1)
+        .material(Material.HE, 1)
+]
+
+export const GC = [
+    new Recipe(Material.GC, 10, "7h 12m")
+        .factory(Factory.WEL)
+        .material(Material.FE, 1)
+        .material(Material.AL, 1)
+        .material(Material.HE, 1)
+]
+
+export const GV = [
+    new Recipe(Material.GV, 1, "6h")
+        .factory(Factory.WEL)
+        .material(Material.AL, 1)
+        .material(Material.HE, 1)
+]
+
 export const MGC = [
     new Recipe(Material.MGC, 1, "1d 2h")
         .factory(Factory.PP3)
@@ -532,11 +591,32 @@ export const MGC = [
         .material(Material.LDE, 1)
 ]
 
-export const HSE = [
-    new Recipe(Material.HSE, 2, "15h 36m")
+export const MHL = [
+    new Recipe(Material.MHL, 1, "16h 48m")
+        .factory(Factory.WEL)
+        .material(Material.I, 1)
+        .material(Material.FE, 1)
+        .material(Material.HE, 1)
+]
+
+export const LIT = [
+    new Recipe(Material.LIT, 1, "19h 12m")
+        .factory(Factory.GF)
+        .material(Material.NE, 16)
+        .material(Material.RG, 8)
+]
+
+export const PSH = [
+    new Recipe(Material.PSH, 1, "9h 36m")
         .factory(Factory.PP3)
-        .material(Material.LSE, 2)
-        .material(Material.TCS, 1)
+        .material(Material.TI, 1)
+        .material(Material.NFI, 250)
+]
+
+export const TCS = [
+    new Recipe(Material.TCS, 3, "12h")
+        .factory(Factory.TNP)
+        .material(Material.TC, 1)
 ]
 
 export const TSH = [
@@ -554,15 +634,14 @@ export const TRU = [
         .material(Material.HE, 1)
 ]
 
-export const MHL = [
-    new Recipe(Material.MHL, 1, "16h 48m")
-        .factory(Factory.WEL)
-        .material(Material.I, 1)
-        .material(Material.FE, 1)
-        .material(Material.HE, 1)
+// ------------------- Construction Prefabs --------------------
+export const HSE = [
+    new Recipe(Material.HSE, 2, "15h 36m")
+        .factory(Factory.PP3)
+        .material(Material.LSE, 2)
+        .material(Material.TCS, 1)
 ]
 
-// ------------------- Construction Prefabs --------------------
 export const BSE = [
     new Recipe(Material.BSE, 1, "6h")
         .factory(Factory.PP2)
