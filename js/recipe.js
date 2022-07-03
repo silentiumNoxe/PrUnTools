@@ -1619,3 +1619,52 @@ export const PSS = [
         .factory(Factory.PPF)
         .material(Material.PG, 10)
 ]
+
+// ------------------- Textiles -------------------------
+export const CF = [
+    new Recipe(Material.CF, 1, "9h 36m")
+        .factory(Factory.SME)
+        .material(Material.AL, 4)
+        .material(Material.SI, 1)
+        .material(Material.O, 2)
+]
+
+export const CTF = [
+    new Recipe(Material.CTF, 1, "9h 36m")
+        .factory(Factory.ASM)
+        .material(Material.WAL, 2)
+        .material(Material.SI, 1)
+        .material(Material.O, 1)
+]
+
+export const COT = [
+    new Recipe(Material.COT, 1, "7h 12m")
+        .factory(Factory.WPL)
+        .material(Material.RCO, 1)
+]
+
+export const KV = [
+    new Recipe(Material.KV, 1, "19h 12m")
+        .factory(Factory.WPL)
+        .material(Material.PG, 75)
+        .material(Material.TCL, 5)
+]
+
+export const NL = [
+    new Recipe(Material.NL, 1, "12h")
+        .factory(Factory.WPL)
+        .material(Material.PG, 50)
+]
+
+export const SIL = [
+    new Recipe(Material.SIL, 1, "12h")
+        .factory(Factory.WPL)
+        .material(Material.RSI, 1)
+]
+
+export const TK = [
+    new Recipe(Material.TK, 1, "21h 36m")
+        .factory(Factory.WPL)
+        .material(Material.KV, 1)
+        .material(Material.TC, 1)
+]
