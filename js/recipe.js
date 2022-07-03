@@ -1378,3 +1378,244 @@ export const W = [
 ]
 
 // -------------------- Minerals ---------------------
+export const BER = [
+    new Recipe(Material.BER, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.BER, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.BER, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const BRM = [
+    new Recipe(Material.BRM, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.BRM, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.BRM, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const BOR = [
+    new Recipe(Material.BOR, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.BOR, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.BOR, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const CLI = [
+    new Recipe(Material.CLI, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.CLI, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.CLI, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const GAL = [
+    new Recipe(Material.GAL, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.GAL, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.GAL, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const HAL = [
+    new Recipe(Material.HAL, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.HAL, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.HAL, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const LST = [
+    new Recipe(Material.LST, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.LST, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.LST, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const MGS = [
+    new Recipe(Material.MGS, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.MGS, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.MGS, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const MAG = [
+    new Recipe(Material.MAG, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.MAG, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.MAG, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const SCR = [
+    new Recipe(Material.SCR, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.SCR, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.SCR, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const TAI = [
+    new Recipe(Material.TAI, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.TAI, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.TAI, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const TCO = [
+    new Recipe(Material.TCO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.TCO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.TCO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const TS = [
+    new Recipe(Material.TS, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.TS, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.TS, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const ZIR = [
+    new Recipe(Material.ZIR, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.ZIR, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.ZIR, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+// --------------------- Ores -----------------------
+export const ALO = [
+    new Recipe(Material.ALO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.ALO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.ALO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const CUO = [
+    new Recipe(Material.CUO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.CUO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.CUO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const AUO = [
+    new Recipe(Material.AUO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.AUO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.AUO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const FEO = [
+    new Recipe(Material.FEO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.FEO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.FEO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const LIO = [
+    new Recipe(Material.LIO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.LIO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.LIO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const SIO = [
+    new Recipe(Material.SIO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.SIO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.SIO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+export const TIO = [
+    new Recipe(Material.TIO, 70, "1d")
+        .factory(Factory.COL),
+    new Recipe(Material.TIO, 70, "1d")
+        .factory(Factory.EXT),
+    new Recipe(Material.TIO, 70, "1d")
+        .factory(Factory.RIG),
+]
+
+// ------------------ Plastics ----------------------
+export const DCL = [
+    new Recipe(Material.DCL, 2, "16h 48m")
+        .factory(Factory.PPF)
+        .material(Material.PSL, 2)
+        .material(Material.MFK, 2)
+        .material(Material.PG, 40)
+]
+
+export const PSL = [
+    new Recipe(Material.PSL, 1, "14h 24m")
+        .factory(Factory.PPF)
+        .material(Material.PG, 40)
+]
+
+export const DCM = [
+    new Recipe(Material.DCM, 2, "12h")
+        .factory(Factory.PPF)
+        .material(Material.PSM, 2)
+        .material(Material.SFK, 8)
+        .material(Material.PG, 20)
+]
+
+export const PE = [
+    new Recipe(Material.PE, 200, "6h 43m")
+        .factory(Factory.BMP)
+        .material(Material.C, 1)
+        .material(Material.H, 2)
+]
+
+export const PG = [
+    new Recipe(Material.PG, 50, "8h 24m")
+        .factory(Factory.POL)
+        .material(Material.H, 1)
+        .material(Material.C, 1)
+        .material(Material.MG, 1)
+]
+
+export const DCS = [
+    new Recipe(Material.DCS, 2, "7h 12m")
+        .factory(Factory.PPF)
+        .material(Material.SFK, 4)
+        .material(Material.PG, 10)
+        .material(Material.PSS, 1)
+]
+
+export const PSS = [
+    new Recipe(Material.PSS, 1, "4h 48m")
+        .factory(Factory.PPF)
+        .material(Material.PG, 10)
+]
