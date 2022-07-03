@@ -1,7 +1,7 @@
 const version = 1;
 const dbName = "app";
 
-function open() {
+export default function open() {
     let openRequest = indexedDB.open(dbName, version);
     openRequest.addEventListener("error", console.error);
     openRequest.addEventListener("upgradeneeded", (event) => {
@@ -10,10 +10,4 @@ function open() {
         store.createIndex("name_idx", "name", {unique: true});
     });
     return openRequest;
-}
-
-function putBase(data) {
-    const {
-        name
-    } = data;
 }
