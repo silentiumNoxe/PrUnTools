@@ -9,7 +9,7 @@
     <!--header rgba(63, 162, 222, 0.15)-->
     <style>
         * {
-            color: #bbb;
+            color: #999;
             font-family: 'Droid Sans', sans-serif;
             background-color: #222;
         }
@@ -20,11 +20,19 @@
 
         input {
             border: none;
-            border-bottom: 1px solid black;
             outline: none;
         }
 
+        input:hover {
+            border-bottom: #bbbbbb;
+        }
+
+        input:focus {
+            border-bottom: 1px solid rgb(63 162 222 / 50%)
+        }
+
         material-icon {
+            margin: 8px;
             width: min-content;
             height: min-content;
             padding: 15px 10px 15px 10px;
@@ -49,6 +57,41 @@
             cursor: pointer;
             user-select: auto;
         }
+
+        .block > header > span {
+            color: #999;
+            margin-left: 5px;
+            display: inline-block;
+            font-size: 10px;
+            line-height: 1;
+            background-color: transparent;
+        }
+
+        .material {
+            padding: 2px;
+        }
+
+        .material > label {
+            margin-top: 5px;
+            margin-left: 8px;
+        }
+
+        [data-type='prices'] {
+            margin-left: 8px;
+        }
+
+        [data-type='prices'] > * {
+            display: block;
+        }
+
+        [data-type='data'] {
+            margin-left: 8px;
+            margin-top: 5px;
+        }
+
+        [data-type="commons"] {
+            max-width: 5vw;
+        }
     </style>
 </head>
 <body>
@@ -56,12 +99,57 @@
       <h2>Trade Calculator</h2>
       <div style="display: flex">
           <div class="block">
-              <header>Sell</header>
+              <header>Result</header>
+              <div data-type="data">
+                  <label>
+                      Commons -
+                      <input data-type="commons" type="number" disabled value="0">
+                  </label>
+              </div>
+          </div>
+          <div class="block">
+              <header>Sell<span>FOD</span></header>
               <div class="material">
                   <material-icon ticker="FOD"></material-icon>
+                  <label>
+                      Amount -
+                      <input data-type="amount" type="number" min="0" value="1" onkeyup="calc()" onchange="calc()">
+                  </label>
+                  <div data-type="prices">
+                      <label>
+                          Cost price -
+                          <input data-type="ask-price" type="number" min="0" step="0.01" disabled value="10" onkeyup="calc()" onchange="calc()">
+                      </label>
+                      <label>
+                          Ask price -
+                          <input data-type="ask-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()" onchange="calc()">
+                      </label>
+                      <label>
+                          Bid price -
+                          <input data-type="bid-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()" onchange="calc()">
+                      </label>
+                      <label>
+                          My price -
+                          <input data-type="my-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()" onchange="calc()">
+                      </label>
+                  </div>
               </div>
           </div>
       </div>
   </div>
+
+<script>
+    function calc() {
+        const materials = document.querySelectorAll(".material");
+        let commons = 0;
+        for (const material of materials) {
+            const amount = material.querySelector("[data-type='amount']").value;
+            const myPrices = material.querySelector("[data-type='my-price']").value;
+            commons += amount * myPrices;
+        }
+
+        document.querySelector("[data-type='commons']").value = commons;
+    }
+</script>
 </body>
 </html>
