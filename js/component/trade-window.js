@@ -40,13 +40,26 @@ class TradeWindow extends HTMLElement {
                 $material.innerHTML = `<label class="light-blue label">Material</label><div class="blue" data-type="info">${target._name}</div>`;
                 $data.append($material);
 
+                const askPrice = 0;
+                const bidPrice = 0;
+                const $exchange = document.createElement("div");
+                $exchange.classList.add("row")
+                $exchange.classList.add("dark-blue");
+                let $label = document.createElement("label")
+                $label.classList.add("light-blue");
+                $label.classList.add("label");
+                $label.innerText = "Ask/Bid Price";
+                $exchange.append($label);
+                $exchange.innerHTML += `<div class="blue" data-type="cx-price"><span>${askPrice}</span><button onclick="setPrice(${askPrice}, '${ticker}')">set</button>/<span>${bidPrice}</span><button onclick="setPrice(${bidPrice}, '${ticker}')">set</button></div>`;
+                $data.append($exchange);
+
                 const $quantity = document.createElement("div");
                 $quantity.classList.add("row");
                 $quantity.classList.add("dark-yellow");
                 $quantity.innerHTML = `<label class="light-yellow bold label">Quantity</label>
                     <div class="dark-yellow">
-                        <input class="bl-right" data-type="amount" type="number" min="0" value="0" onkeyup="calc('${ticker}')"
-                               onchange="calc('${ticker}')">
+                        <input class="bl-right" data-type="amount" type="number" min="0" value="0" onkeyup="calc()"
+                               onchange="calc()">
                     </div>`;
                 $data.append($quantity);
 
@@ -55,8 +68,8 @@ class TradeWindow extends HTMLElement {
                 $price.classList.add("dark-yellow");
                 $price.innerHTML = `<label class="light-yellow bold label">Price</label>
                     <div class="dark-yellow">
-                        <input class="bl-right" data-type="price" type="number" min="0" value="0" onkeyup="calc('${ticker}')"
-                               onchange="calc('${ticker}')">
+                        <input class="bl-right" data-type="price" type="number" min="0" value="0" step="0.01" onkeyup="calc()"
+                               onchange="calc()">
                     </div>`;
                 $data.append($price);
 
