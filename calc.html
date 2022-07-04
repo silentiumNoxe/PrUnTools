@@ -5,7 +5,9 @@
     <title>Calculator</title>
 
     <script src="js/component/material-icon.js"></script>
+    <script src="js/component/trade-window.js"></script>
 
+    <link rel="stylesheet" href="style.css">
     <!--header rgba(63, 162, 222, 0.15)-->
     <style>
         * {
@@ -16,19 +18,6 @@
 
         .price-set {
             border: 1px dashed black;
-        }
-
-        input {
-            border: none;
-            outline: none;
-        }
-
-        input:hover {
-            border-bottom: #bbbbbb;
-        }
-
-        input:focus {
-            border-bottom: 1px solid rgb(63 162 222 / 50%)
         }
 
         material-icon {
@@ -89,66 +78,110 @@
             margin-top: 5px;
         }
 
+        [data-type='data'] > * {
+            display: block;
+        }
+
         [data-type="commons"] {
             max-width: 5vw;
+        }
+
+        [data-type="static"] {
+            display: inline-block;
+            line-height: 17px;
+            padding: 0 4px;
+            background-color: #26353e;
         }
     </style>
 </head>
 <body>
-  <div>
-      <h2>Trade Calculator</h2>
-      <div style="display: flex">
-          <div class="block">
-              <header>Result</header>
-              <div data-type="data">
-                  <label>
-                      Commons -
-                      <input data-type="commons" type="number" disabled value="0">
-                  </label>
-              </div>
-          </div>
-          <div class="block">
-              <header>Sell<span>FOD</span></header>
-              <div class="material">
-                  <material-icon ticker="FOD"></material-icon>
-                  <label>
-                      Amount -
-                      <input data-type="amount" type="number" min="0" value="1" onkeyup="calc()" onchange="calc()">
-                  </label>
-                  <div data-type="prices">
-                      <label>
-                          Cost price -
-                          <input data-type="ask-price" type="number" min="0" step="0.01" disabled value="10" onkeyup="calc()" onchange="calc()">
-                      </label>
-                      <label>
-                          Ask price -
-                          <input data-type="ask-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()" onchange="calc()">
-                      </label>
-                      <label>
-                          Bid price -
-                          <input data-type="bid-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()" onchange="calc()">
-                      </label>
-                      <label>
-                          My price -
-                          <input data-type="my-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()" onchange="calc()">
-                      </label>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div>
+    <h2>Trade Calculator</h2>
+    <div style="display: flex">
+        <div class="block">
+            <header>Result</header>
+            <div data-type="data">
+                <label>
+                    Income -
+                    <input data-type="income" type="number" disabled value="0">
+                </label>
+                <label>
+                    Expences-
+                    <input data-type="expences" type="number" disabled value="0">
+                </label>
+                <label>
+                    Difference -
+                    <input data-type="diff" disabled value="0">
+                </label>
+            </div>
+        </div>
+        <div class="block">
+            <header>Sell<span>FOD</span></header>
+            <div class="material" data-type="sell" data-group="agriculture">
+                <material-icon ticker="FOD"></material-icon>
+                <label>
+                    Amount -
+                    <input data-type="amount" type="number" min="0" value="1" onkeyup="calc()" onchange="calc()">
+                </label>
+                <div data-type="prices">
+                    <label>
+                        Cost price -
+                        <input data-type="ask-price" type="number" min="0" step="0.01" disabled value="10"
+                               onkeyup="calc()" onchange="calc()">
+                    </label>
+                    <label>
+                        Ask price -
+                        <input data-type="ask-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()"
+                               onchange="calc()">
+                    </label>
+                    <label>
+                        Bid price -
+                        <input data-type="bid-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()"
+                               onchange="calc()">
+                    </label>
+                    <label>
+                        My price -
+                        <input data-type="my-price" type="number" min="0" step="0.01" value="0" onkeyup="calc()"
+                               onchange="calc()">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <trade-window ticker="FF" type="buy"></trade-window>
+        <trade-window ticker="SF" type="buy"></trade-window>
+    </div>
+</div>
 
 <script>
-    function calc() {
-        const materials = document.querySelectorAll(".material");
-        let commons = 0;
-        for (const material of materials) {
-            const amount = material.querySelector("[data-type='amount']").value;
-            const myPrices = material.querySelector("[data-type='my-price']").value;
-            commons += amount * myPrices;
-        }
+    function calc(ticker) {
+        calcIncome(ticker);
+        calcExpences(ticker);
+        calcDiff();
+    }
 
-        document.querySelector("[data-type='commons']").value = commons;
+    function calcIncome(ticker) {
+        const sellMaterials = document.querySelectorAll(`trade-window[type="sell"]`);
+        for (const material of sellMaterials) {
+            const amount = material.querySelector("[data-type='amount']").value;
+            const price = material.querySelector("[data-type='price']").value;
+            material.querySelector("[data-type='volume']").innerText = amount * price;
+        }
+    }
+
+    function calcExpences(ticker) {
+        const buyMaterials = document.querySelectorAll(`trade-window[type="buy"]`);
+        for (const material of buyMaterials) {
+            const amount = material.querySelector("[data-type='amount']").value;
+            const price = material.querySelector("[data-type='price']").value;
+            material.querySelector("[data-type='volume']").innerText = amount * price;
+        }
+    }
+
+    function calcDiff() {
+        const income = document.querySelector("[data-type='income']").value;
+        const expences = document.querySelector("[data-type='expences']").value;
+        const value = income - expences;
+        document.querySelector("[data-type='diff']").value = value > 0 ? "+" + value : value;
     }
 </script>
 </body>

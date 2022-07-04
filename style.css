@@ -1,0 +1,69 @@
+@import "commons.css";
+
+input {
+    outline: none;
+    border: 0;
+    line-height: 17px;
+    padding: 0 4px;
+    border-bottom: 1px solid #8d6411;
+    background-color: #42361d;
+    color: #bbb;
+}
+
+input:focus {
+    border-bottom-color: #f7a600;
+}
+
+input.invalid {
+    border-bottom: 1px solid #7e3b39;
+    background-color: #3d2929;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 2px;
+    font-size: 11px;
+}
+
+.row input {
+    margin-left: 2vw;
+    text-align: right;
+    width: min(5vw, 100px);
+}
+
+.light-blue {
+    background-color: #3fa2de;
+}
+
+.blue {
+    background-color: #26353e;
+}
+
+.dark-blue {
+    background-color: #23282b;
+}
+
+.light-yellow {
+    background-color: #f7a600;
+}
+
+.dark-yellow {
+    background-color: #2d2920;
+}
+
+.row .label {
+    padding: 2px 2px;
+    line-height: 1.1;
+    font-size: 12px;
+    min-width: 100px;
+    font-weight: bold;
+    color: #272727;
+}
+
+.row [data-type="info"], .row [data-type="volume"] {
+    display: inline-block;
+    text-align: right;
+    margin-left: auto;
+    background-color: #26353e;
+    padding: 2px 2px;
+}
