@@ -1,13 +1,20 @@
 export const Production = {
-    Agriculture: 0,
-    Chemistry: 1,
-    Construction: 2,
-    Electronics: 3,
-    FoodIndustries: 4,
-    FuelRefining: 5,
-    Manufacturing: 6,
-    Metallurgy: 7,
-    ResourceExtraction: 8
+    Agriculture: "Agriculture",
+    Chemistry: "Chemistry",
+    Construction: "Construction",
+    Electronics: "Electronics",
+    FoodIndustries: "FoodIndustries",
+    FuelRefining: "FuelRefining",
+    Manufacturing: "Manufacturing",
+    Metallurgy: "Metallurgy",
+    ResourceExtraction: "ResourceExtraction"
+}
+
+export const ProductionStyle = {
+    Agriculture: {
+        background: "linear-gradient(135deg, rgb(92, 18, 18), rgb(117, 43, 43))",
+        color: "rgb(219, 145, 145)"
+    }
 }
 
 export const Worker = {

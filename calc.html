@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+
+    <script src="js/component/material-icon.js"></script>
+
+    <!--header rgba(63, 162, 222, 0.15)-->
+    <style>
+        * {
+            color: #bbb;
+            font-family: 'Droid Sans', sans-serif;
+            background-color: #222;
+        }
+
+        .price-set {
+            border: 1px dashed black;
+        }
+
+        input {
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+        }
+
+        material-icon {
+            width: min-content;
+            height: min-content;
+            padding: 15px 10px 15px 10px;
+            display: block;
+            font-weight: bold;
+            font-size: 0.8vw;
+            cursor: pointer;
+        }
+
+        .block {
+            border: 1px solid rgba(63, 162, 222, 0.15);
+            box-shadow: 0 0 5px rgb(63 162 222 / 50%);
+            margin: 6px;
+        }
+
+        .block > header {
+            background-color: rgba(63, 162, 222, 0.15);
+            color: #eee;
+            padding: 5px 8px;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(63, 162, 222, 0.2);
+            cursor: pointer;
+            user-select: auto;
+        }
+    </style>
+</head>
+<body>
+  <div>
+      <h2>Trade Calculator</h2>
+      <div style="display: flex">
+          <div class="block">
+              <header>Sell</header>
+              <div class="material">
+                  <material-icon ticker="FOD"></material-icon>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

@@ -35,6 +35,11 @@ class Material {
         this._natural = val;
         return this;
     }
+
+    category(val) {
+        this._category = val;
+        return this;
+    }
 }
 
 // ----------------------Agricultural Products------------------------
@@ -42,78 +47,97 @@ class Material {
 export const FOD = new Material("FOD")
     .name("All-Purpose Fodder")
     .weight(1200)
+    .category(Production.Agriculture)
 
 export const HOP = new Material("HOP")
     .name("Flowery Hops")
     .weight(350)
+    .category(Production.Agriculture)
 
 export const CAF = new Material("CAF")
     .name("Caffeinated Beans")
     .weight(860)
+    .category(Production.Agriculture)
 
 export const GRN = new Material("GRN")
     .name("High-Carb Grains")
     .weight(900)
+    .category(Production.Agriculture)
 
 export const MAI = new Material("MAI")
     .name("High-Carb Maize")
     .weight(1300)
+    .category(Production.Agriculture)
 
 export const RCO = new Material("RCO")
     .name("Raw Cotton Fiber")
     .weight(950)
+    .category(Production.Agriculture)
 
 export const NUT = new Material("NUT")
     .name("Triglyceride Nuts")
     .weight(900)
+    .category(Production.Agriculture)
 
 export const BEA = new Material("BEA")
     .name("Protein-Rich Beans")
     .weight(800)
+    .category(Production.Agriculture)
 
 export const VEG = new Material("VEG")
     .name("Triglyceride Fruits")
     .weight(1100)
+    .category(Production.Agriculture)
 
 export const GRA = new Material("GRA")
     .name("Wine-Quality Grapes")
     .weight(1100)
+    .category(Production.Agriculture)
 
 export const HER = new Material("HER")
     .name("Spicy Herbs")
     .weight(400)
+    .category(Production.Agriculture)
 
 export const HCP = new Material("HCP")
     .name("Hydrocarbon Plants")
     .weight(800)
+    .category(Production.Agriculture)
 
 export const MTP = new Material("MTP")
     .name("Meat Tissue Patties")
     .weight(700)
+    .category(Production.Agriculture)
 
 export const MUS = new Material("MUS")
     .name("Protein-Rich Mushrooms")
     .weight(800)
+    .category(Production.Agriculture)
 
 export const PIB = new Material("PIB")
     .name("Pineberries")
     .weight(300)
+    .category(Production.Agriculture)
 
 export const ALG = new Material("ALG")
     .name("Protein-Rich Algae")
     .weight(700)
+    .category(Production.Agriculture)
 
 export const PPA = new Material("PPA")
     .name("Protein Paste")
     .weight(2000)
+    .category(Production.Agriculture)
 
 export const RSI = new Material("RSI")
     .name("Raw Silk Strains")
     .weight(1100)
+    .category(Production.Agriculture)
 
 export const VIT = new Material("VIT")
     .name("Vita Essence")
     .weight(900)
+    .category(Production.Agriculture)
 
 // -----------------------Chemicals--------------------------------
 export const NS = new Material("NS")
@@ -282,11 +306,6 @@ export const MGC = new Material("MGC")
     .name("Magnetic Ground Cover")
     .weight(600)
     .volume(0.9)
-
-export const HSE = new Material("HSE")
-    .name("Hardened Structural Elements")
-    .weight(3100)
-    .volume(0.7)
 
 export const TSH = new Material("TSH")
     .name("Thermal Shielding")

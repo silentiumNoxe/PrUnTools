@@ -4,6 +4,7 @@ export default class Base {
     planet;
     /** @type Array<Factory> */
     factories = [];
+    workforce = [];
 
     /** @param planet {Planet}*/
     constructor(planet) {
