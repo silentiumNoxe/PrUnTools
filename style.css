@@ -1,0 +1,150 @@
+@import "commons.css";
+
+* {
+    --font-family: 'Droid Sans', sans-serif;
+
+    margin: 0;
+
+    font-family: var(--font-family);
+
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 4px 8px;
+}
+
+th {
+    border-top: none;
+    border-left: none;
+}
+
+td {
+    border-left: none;
+    text-align: right;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tr:last-child > * {
+    border-bottom: none;
+}
+
+[data-list="base"] {
+    display: flex;
+}
+
+[data-model="base"] {
+    border: 1px solid black;
+}
+
+[data-model="base"] > * {
+    padding: 10px 15px;
+}
+
+[data-model="base"] > header {
+    display: flex;
+    padding-bottom: 3px;
+    border-bottom: 1px solid black;
+}
+
+[data-type="control"] {
+    display: flex;
+    margin-left: auto;
+}
+
+[data-list="page"] {
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(to right, #262626 0, #191919 100%) repeat-x;
+    width: 52px;
+
+    font-size: 11px;
+    line-height: 1.1;
+}
+
+[data-list="page"] > button, [data-list="page"] > a {
+    text-decoration: none;
+    color: #999999;
+    border: none;
+
+    border-right: 2px solid rgba(63, 162, 222, 0.15);
+
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1px;
+    background-color: rgba(255, 255, 255, 0.05);
+
+    text-align: left;
+
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0 4px 0 6px;
+    line-height: 19px;
+
+    font-size: 11px;
+}
+
+[data-list="page"] .selected {
+    border-right: 2px solid #f7a600;
+}
+
+.main-container {
+    --txt-color: #999999;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    color: var(--txt-color);
+}
+
+[data-list="top-control"] {
+    background-color: #1e1e1e;
+    height: 26px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+[data-list="top-control"] [data-type="current-page"], [data-list="top-control"] button {
+    height: 24px;
+    line-height: 19px;
+    padding: 5px 6px 0;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(63, 162, 222, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    font-size: 11px;
+    color: var(--txt-color);
+    margin: 0 1px;
+}
+
+[data-list="top-control"] button {
+    border: none;
+    border-bottom: 2px solid rgba(247, 166, 0, 0.15);
+}
+
+[data-list="top-control"] button:hover {
+    color: #ddd;
+}
+
+.logo {
+    margin: 13px 11px;
+    height: 30px;
+    width: 30px;
+    background-image: url("assets/logo.png");
+    background-size: cover;
+}

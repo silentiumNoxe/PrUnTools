@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    background-color: #262626;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+}
+
+.kv {
+    display: flex;
+}
+
+.kv > :first-child {
+    min-width: 70px;
+}
+
+.kv > :last-child {
+    margin-left: 10px;
+}
