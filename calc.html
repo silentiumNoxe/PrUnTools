@@ -101,7 +101,8 @@
 <body>
 <div>
     <h2>Trade Calculator</h2>
-    <div style="display: flex; flex-flow: row wrap">
+    <button class="new-buff" onclick="createTradeWindow()">New Buff</button>
+    <div id="container" style="display: flex; flex-flow: row wrap">
         <div class="block" style="min-width: 300px">
             <header>Result</header>
             <div class="data">
@@ -172,6 +173,10 @@
         const $price = document.querySelector(`trade-window[ticker="${ticker}"] [data-type="price"]`);
         $price.value = price;
         $price.dispatchEvent(new CustomEvent("change"));
+    }
+
+    function createTradeWindow() {
+        const $container = document.getElementById("container");
     }
 </script>
 </body>

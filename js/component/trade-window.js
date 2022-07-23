@@ -50,7 +50,7 @@ class TradeWindow extends HTMLElement {
                 $label.classList.add("label");
                 $label.innerText = "Ask/Bid Price";
                 $exchange.append($label);
-                $exchange.innerHTML += `<div class="blue" data-type="cx-price"><span>${askPrice}</span><button onclick="setPrice(${askPrice}, '${ticker}')">set</button>/<span>${bidPrice}</span><button onclick="setPrice(${bidPrice}, '${ticker}')">set</button></div>`;
+                $exchange.innerHTML += `<div class="blue" data-type="cx-price"><span class="blue">${askPrice}</span><button onclick="setPrice(${askPrice}, '${ticker}')">set</button>/<span class="blue">${bidPrice}</span><button onclick="setPrice(${bidPrice}, '${ticker}')">set</button></div>`;
                 $data.append($exchange);
 
                 const $quantity = document.createElement("div");
