@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>PrUn Noxe Tools</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="util/commons.js"></script>
+    <script src="component/empty-window.js"></script>
 </head>
 <body>
-    <input id="time" placeholder="time">
-    <div id="seconds"></div>
-    <div id="minutes"></div>
-    <div id="hours"></div>
-    <div id="days"></div>
-    <script type="module">
-        import Duration from "./js/duration.js";
-        document.getElementById("time").addEventListener("keyup", (event) => {
-            console.log("enter time -", event.target.value);
-            const duration = new Duration(event.target.value)
-            document.getElementById("seconds").innerText = "Seconds: "+duration.getSeconds();
-            document.getElementById("minutes").innerText = "Minutes: "+duration.getMinutes();
-            document.getElementById("hours").innerText = "Hours: "+duration.getHours();
-            document.getElementById("days").innerText = "Days: "+duration.getDays();
-        })
-    </script>
+<div data-list="page">
+    <div class="logo"></div>
+    <button class="selected">SCRNS</button>
+    <button>SDBR</button>
+    <button class="selected">BFRS</button>
+    <br>
+</div>
+<div class="main-container">
+    <div data-list="top-control">
+        <div class="flex">
+            <div data-type="current-page" style="width: 10vw">
+                <span>SCRN:</span>
+                <strong>NO NAME</strong>
+            </div>
+            <button data-action="add">Add</button>
+        </div>
+        <div class="flex">
+            <button data-action="help">Help</button>
+            <button data-action="logout">Logout</button>
+        </div>
+    </div>
+    <div class="main-container-center">
+        <div class="content">
+            <div class="unknown flex flex-row flex-grow1">
+                <div class="flex-grow1 relative m4">
+                    <empty-window></empty-window>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-list="bottom-control">
+        <button data-action="create-buffer">NEW BFR</button>
+    </div>
+</div>
 </body>
 </html>
