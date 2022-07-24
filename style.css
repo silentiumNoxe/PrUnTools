@@ -206,6 +206,9 @@ empty-window input {
 }
 
 .window {
+    --font-size: 11px;
+    --line-height: 1.1;
+
     position: absolute;
     top: 0;
     right: 0;
@@ -219,4 +222,31 @@ empty-window input {
 
     background-color: #222;
     box-shadow: 0 0 5px rgb(63 162 222 / 50%);
+
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+
+.window > .content > header {
+    background-color: rgba(63, 162, 222, 0.15);
+    color: var(--gray-2-color);
+
+    padding: 5px 8px;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid rgba(63, 162, 222, 0.2);
+
+    user-select: auto;
+    cursor: pointer;
+
+    text-transform: uppercase;
+}
+
+mat-window > .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    isolation: isolate;
 }

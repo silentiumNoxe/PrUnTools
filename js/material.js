@@ -1,4 +1,5 @@
 import {Production} from "./constants.js";
+import Optional from "./util/optional.js";
 
 class Material {
     _natural = false;
@@ -35,6 +36,15 @@ class Material {
         this._natural = val;
         return this;
     }
+}
+
+/** @return Optional<Material>*/
+export const find = function (ticker) {
+    if (ticker.isBlank()) {
+        throw new Error("Ticker can't be empty");
+    }
+
+    return Optional.ofNullable(this[ticker.toUpperCase()]);
 }
 
 // ----------------------Agricultural Products------------------------
@@ -414,11 +424,6 @@ export const ATA = new Material("ATA")
     .name("Advanced Transparent Aperture")
     .weight(300)
     .volume(0.4)
-
-export const HSE = new Material("HSE")
-    .name("Hardened Structural Elements")
-    .weight(3100)
-    .volume(0.7)
 
 export const RBH = new Material("RBH")
     .name("Reinforced Bulkhead")

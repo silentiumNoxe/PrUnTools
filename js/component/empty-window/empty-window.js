@@ -1,4 +1,4 @@
-class EmptyWindow extends HTMLElement {
+export default class EmptyWindow extends HTMLElement {
 
     static get observedAttributes() {
         return [];
