@@ -9,6 +9,10 @@
     --red-2-color: #7e3b39;
 }
 
+.hidden {
+    display: none !important;
+}
+
 body {
     display: flex;
     background-color: #262626;

@@ -6,6 +6,18 @@ Object.requireNonNull = function (val) {
     return val;
 }
 
+if (!HTMLElement.prototype.hide) {
+    HTMLElement.prototype.hide = function () {
+        this.classList.add("hidden");
+    }
+}
+
+if (!HTMLElement.prototype.show) {
+    HTMLElement.prototype.show = function () {
+        this.classList.remove("hidden");
+    }
+}
+
 if (!String.prototype.isBlank) {
     String.prototype.isBlank = function () {
         return this.isEmpty() || this.trim().length === 0;

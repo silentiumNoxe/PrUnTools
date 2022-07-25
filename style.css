@@ -215,7 +215,7 @@ empty-window input {
     bottom: 0;
     left: 0;
 
-    height: 100%;
+    height: 99%;
     margin: 6px;
 
     overflow: hidden;
@@ -241,6 +241,9 @@ empty-window input {
     cursor: pointer;
 
     text-transform: uppercase;
+
+    display: flex;
+    flex-direction: row;
 }
 
 mat-window > .content {
@@ -249,4 +252,16 @@ mat-window > .content {
     flex-direction: column;
     height: 100%;
     isolation: isolate;
+}
+
+button[data-type="window-setting"] {
+    color: var(--gray-color);
+    border: none;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+button[data-type="window-setting"]:hover {
+    background-color: var(--yellow-color);
+    color: var(--black-color);
 }
