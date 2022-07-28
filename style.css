@@ -15,30 +15,56 @@ button {
 }
 
 table {
+    font-size: 11px;
+    line-height: 1.1;
+    table-layout: auto;
     border-collapse: collapse;
+    width: 100%;
+    color: #bbb;
 }
 
-th, td {
-    border: 1px solid black;
-    padding: 4px 8px;
+table tbody {
+    border-bottom: 1px solid #2b485a;
 }
 
-th {
-    border-top: none;
+table thead th {
+    border-bottom: 1px solid #2b485a;
+    text-align: left;
+    padding: 5px 8px 2px;
+}
+
+table th, table td {
+    font-weight: normal;
+    padding: 5px 8px;
+}
+
+table tbody td:nth-child(odd) {
+    background-color: #23282b;
+}
+
+table tbody td:first-child {
     border-left: none;
 }
 
-td {
-    border-left: none;
-    text-align: right;
+table tbody td {
+    padding: 2px 8px;
+    border-left: 1px solid #2b485a;
 }
 
-th:last-child, td:last-child {
-    border-right: none;
+table thead th {
+    border-bottom: 1px solid #2b485a;
+    text-align: left;
+    padding: 5px 8px 2px;
 }
 
-tr:last-child > * {
-    border-bottom: none;
+h2 {
+    flex-shrink: 0;
+    display: block;
+    font-size: 12px;
+    margin: 0;
+    padding: 6px 4px 2px;
+    background-color: rgba(63, 162, 222, 0.15);
+    color: #bbb;
 }
 
 [data-list="base"] {
@@ -46,7 +72,11 @@ tr:last-child > * {
 }
 
 [data-model="base"] {
-    border: 1px solid black;
+    box-shadow: 0 0 5px rgb(63 162 222 / 50%);
+    background-color: #222;
+    overflow: hidden;
+    margin: 6px;
+    color: #bbb;
 }
 
 [data-model="base"] > * {
@@ -57,6 +87,8 @@ tr:last-child > * {
     display: flex;
     padding-bottom: 3px;
     border-bottom: 1px solid black;
+    background-color: rgba(63, 162, 222, 0.15);
+    border-bottom: 1px solid rgba(63, 162, 222, 0.2);
 }
 
 [data-type="control"] {
@@ -276,4 +308,37 @@ button[data-type="window-setting"]:hover {
 
 [data-list="window-control"]:hover .gear {
     display: none;
+}
+
+.kv {
+    display: flex;
+    background-color: #23282b;
+    flex-direction: row;
+    font-size: 11px;
+    margin-bottom: 2px;
+    padding: 0;
+}
+
+.kv article:first-child {
+    background-color: #3fa2de;
+    display: inline-block;
+    min-width: 140px;
+    padding: 0 2px;
+    line-height: 17px;
+    color: #272727;
+    font-weight: bold;
+}
+
+.kv article:last-child {
+    margin-left: auto;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.kv article:last-child > * {
+    background-color: #26353e;
+    padding: 0 4px;
+    line-height: 17px;
+    display: inline-block;
+    color: #bbbbbb;
 }
