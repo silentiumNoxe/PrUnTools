@@ -52,6 +52,10 @@ input:invalid {
     flex-direction: row;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .flex-grow1 {
     flex-grow: 1;
 }
@@ -78,4 +82,8 @@ input:invalid {
 
 .m4 {
     margin: 4px;
+}
+
+.debug {
+    border: 1px dashed red;
 }

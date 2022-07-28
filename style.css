@@ -209,11 +209,11 @@ empty-window input {
     --font-size: 11px;
     --line-height: 1.1;
 
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
 
     height: 99%;
     margin: 6px;
@@ -264,4 +264,16 @@ button[data-type="window-setting"] {
 button[data-type="window-setting"]:hover {
     background-color: var(--yellow-color);
     color: var(--black-color);
+}
+
+[data-list="window-control"] .unknown {
+    display: none;
+}
+
+[data-list="window-control"]:hover .unknown {
+    display: block;
+}
+
+[data-list="window-control"]:hover .gear {
+    display: none;
 }

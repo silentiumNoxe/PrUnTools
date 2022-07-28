@@ -8,14 +8,14 @@ const template = `
             <section data-type="title"></section>
             <section data-type="command"></section>
         </div>
-        <div class="flex flex-row" style="margin-left: auto">
-            <div class="flex flex-row" data-list="window-control">
+        <div class="flex flex-row" style="margin-left: auto" data-list="window-control">
+            <button class="gear" data-type="window-setting">&#9881</button>
+            <div class="flex flex-row unknown">
                 <button data-type="window-setting" data-action="v-split">-</button>
                 <button data-type="window-setting" data-action="h-split">|</button>
                 <button data-type="window-setting" data-action="close">x</button>
                 <button data-type="window-setting" data-action="reset">:</button>
             </div>
-            <button class="gear" data-type="window-setting" disabled>&#9881</button>
         </div>
     </header>
 </div>
@@ -51,25 +51,9 @@ export default class MatWindow extends HTMLElement {
 
         this.append(document.importNode($template.content, true));
 
-        this.querySelector(`header section[data-type="title"]`).innerText = material._name;
+        this.querySelector(`header section[data-type="title"]`).innerText = "Material: "+material._name;
 
-        const $controlList = this.querySelector("header [data-list='window-control']");
-
-        this.querySelector("header [data-type='window-setting'].gear")
-            .addEventListener("mouseover", () => {
-                let a = $controlList.classList.contains("hidden");
-                console.log("show control list", a);
-            });
-
-        $controlList.addEventListener("mouseover", () => {
-            this.querySelector("header .gear[data-type='window-setting']").hide();
-            console.log("mouseover")
-        });
-        $controlList.addEventListener("mouseout", () => {
-            this.querySelector("header .gear[data-type='window-setting']").show();
-            $controlList.hide();
-            console.log("mouseout")
-        });
+        this.querySelector(`header [data-action="h-split"]`).addEventListener("click", () => horizontalSplit(this));
     }
 
     clear() {
@@ -99,6 +83,29 @@ export default class MatWindow extends HTMLElement {
     set ticker(val) {
         this.#ticker = val;
     }
+}
+
+function horizontalSplit(window) {
+    const $target = window.parentNode;
+    window.style.width = "50%";
+    window.style.position = "relative";
+    window.style.display = "inline-block";
+
+    const $div = document.createElement("div");
+    $div.classList.add("flex");
+    $div.classList.add("flex-row");
+    $div.classList.add("flex-grow1");
+    $div.classList.add("absolute");
+    $div.append(window);
+
+    const secondWindow = document.createElement("mat-window");
+    secondWindow.setAttribute("ticker", "NUT");
+    secondWindow.style.width = "50%";
+    secondWindow.style.position = "relative";
+    secondWindow.style.display = "inline-block";
+    $div.append(secondWindow);
+
+    $target.append($div);
 }
 
 if (!customElements.get("mat-window")) {

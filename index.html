@@ -44,5 +44,12 @@
         <button data-action="create-buffer">NEW BFR</button>
     </div>
 </div>
+<script>
+    const socket = new WebSocket("wss://apex.prosperousuniverse.com/socket.io/?EIO=3&transport=websocket&sid="+generateId(20));
+    socket.addEventListener("open", () => console.log("opened"));
+    socket.addEventListener("close", () => console.log("closed"));
+    socket.addEventListener("message", (e) => console.log("message", e))
+    socket.addEventListener("error", (e) => console.error("error", e));
+</script>
 </body>
 </html>
