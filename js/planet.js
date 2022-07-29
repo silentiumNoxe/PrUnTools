@@ -6,7 +6,8 @@ export default class Planet {
         GASEOUSE: "gaseouse"
     }
 
-    id;
+    address;
+    name;
     /** @type TYPE*/
     _type;
     _pressure;
@@ -15,8 +16,9 @@ export default class Planet {
     _fertility;
     #resources = [];
 
-    constructor(id) {
-        this.id = id;
+    constructor(address, name) {
+        this.address = address;
+        this.name = name;
     }
 
     type(val) {
@@ -99,7 +101,7 @@ export const dailyExtraction = function (planet) {
 
 }
 
-export const UV796b = new Planet()
+export const UV796b = new Planet("UV-796b", "Proxion")
     .type(Planet.TYPE.ROCKY)
     .fertility(0.22)
     .gravity(1.04)
@@ -109,3 +111,15 @@ export const UV796b = new Planet()
     .resource(new PlanetResource(Material.H2O, 0.12, PlanetResource.TYPE.LIQUID))
     .resource(new PlanetResource(Material.LST, 0.31, PlanetResource.TYPE.MINERAL))
 export const Proxion = UV796b;
+
+export const JS952c = new Planet("JS-952c", "Gibson")
+    .type(Planet.TYPE.ROCKY)
+    .fertility(-0.24)
+    .gravity(0.77)
+    .temperature(33.04)
+    .pressure(0.95)
+    .resource(new PlanetResource(Material.O, 0.16, PlanetResource.TYPE.ATMOSPHERIC))
+    .resource(new PlanetResource(Material.H2O, 0.19, PlanetResource.TYPE.LIQUID))
+    .resource(new PlanetResource(Material.FEO, 0.18, PlanetResource.TYPE.MINERAL))
+    .resource(new PlanetResource(Material.H, 0.07, PlanetResource.TYPE.ATMOSPHERIC))
+export const Gibson = JS952c;

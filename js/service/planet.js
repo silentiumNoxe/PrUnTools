@@ -15,7 +15,14 @@ export default class PlanetService {
 
     /** @return Optional<Object>*/
     getCOGC(id) {
-        return Optional.of({category: Production.Agriculture, value: 0.25});
+        let data;
+        if (id === "UV-796b" || id === "Proxion") {
+            data = {category: Production.Agriculture, value: 0.25};
+        }
+        if (id === "JS-952c" || id === "Gibson") {
+            data = {category: Production.Construction, value: 0.25}
+        }
+        return Optional.ofNullable(data);
     }
 
     /** @return Optional<Object>*/

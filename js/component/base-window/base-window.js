@@ -70,6 +70,7 @@ export default class BaseWindow extends HTMLElement {
 
         this.append(document.importNode($template.content, true));
 
+        this.#renderHeader();
         this.#renderPlanet();
         this.#renderCOGC();
         this.#renderWorkers();
@@ -78,6 +79,14 @@ export default class BaseWindow extends HTMLElement {
 
     #clear() {
         this.innerHTML = "";
+    }
+
+    #renderHeader() {
+        const planetService = PlanetService.instance;
+        const planet = planetService.getData(this.#planet)
+            .orElseThrow(() => new Error(`Planet not found - ${this.#planet}`));
+
+        this.querySelector("header > article").textContent = planet.address + (planet.name ? ` [${planet.name}]` : "");
     }
 
     #renderPlanet() {

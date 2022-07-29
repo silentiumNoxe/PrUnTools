@@ -571,11 +571,22 @@ export const O = new Material("O")
     .weight(1141)
     .volume(1)
 
+export const H = new Material("H")
+    .name("Hydrogen")
+    .weight(70)
+    .volume(1)
+
 // ----------------- Liquids -----------------
 export const H2O = new Material("H2O")
     .name("Water")
     .weight(200)
     .volume(0.2)
+
+// ----------------- Ores -------------------
+export const FEO = new Material("FEO")
+    .name("Iron Ore")
+    .weight(5900)
+    .volume(1)
 
 // ----------------- Minerals ----------------
 export const LST = new Material("LST")
