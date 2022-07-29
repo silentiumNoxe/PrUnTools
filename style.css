@@ -12,6 +12,14 @@
 
 button {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #bbb;
+}
+
+button:hover {
+    background-color: #f7a600;
+    color: #272727;
 }
 
 table {
@@ -86,7 +94,7 @@ h2 {
 
 [data-model="base"] > header, base-window > header {
     display: flex;
-    padding-bottom: 3px;
+    padding: 4px 4px;
     border-bottom: 1px solid black;
     background-color: rgba(63, 162, 222, 0.15);
     border-bottom: 1px solid rgba(63, 162, 222, 0.2);
@@ -337,7 +345,7 @@ button[data-type="window-setting"]:hover {
     text-align: right;
 }
 
-.kv article:last-child > * {
+.kv article:last-child > span {
     background-color: #26353e;
     padding: 0 4px;
     line-height: 17px;
@@ -347,4 +355,20 @@ button[data-type="window-setting"]:hover {
 
 [data-list] {
     margin-bottom: 2px;
+}
+
+.gear {
+    font-weight: bold;
+}
+
+.kv.edit {
+    background-color: #2d2920;
+}
+
+.kv.edit article:first-child {
+    background-color: #f7a600;
+}
+
+.kv.edit article:last-child > input, .kv.edit article:last-child > select {
+    width: 60%;
 }

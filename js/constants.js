@@ -7,7 +7,7 @@ export const Production = {
     FuelRefining: "Fuel Refining",
     Manufacturing: "Manufacturing",
     Metallurgy: "Metallurgy",
-    ResourceExtraction: "Resource Extraction"
+    ResourceExtraction: "Resource Extraction",
 }
 
 export const Worker = {

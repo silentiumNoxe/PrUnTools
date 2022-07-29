@@ -20,7 +20,7 @@ body {
     height: 100vh;
 }
 
-input {
+input, select {
     line-height: 17px;
 
     padding: 0 4px;
@@ -33,9 +33,11 @@ input {
     color: var(--gray-color);
 
     outline: none;
+
+    text-align: right;
 }
 
-input:focus {
+input:focus, select:focus {
     border-bottom: 1px solid var(--yellow-color);
 }
 

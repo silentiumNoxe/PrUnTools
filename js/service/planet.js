@@ -13,14 +13,14 @@ export default class PlanetService {
         return Optional.ofNullable(Planet[id]);
     }
 
-    /** @return Optional<Object>*/
+    /** @return Optional<string>*/
     getCOGC(id) {
         let data;
         if (id === "UV-796b" || id === "Proxion") {
-            data = {category: Production.Agriculture, value: 0.25};
+            data = Production.Agriculture;
         }
         if (id === "JS-952c" || id === "Gibson") {
-            data = {category: Production.Construction, value: 0.25}
+            data = Production.Construction
         }
         return Optional.ofNullable(data);
     }
