@@ -71,7 +71,7 @@ h2 {
     display: flex;
 }
 
-[data-model="base"] {
+[data-model="base"], base-window {
     box-shadow: 0 0 5px rgb(63 162 222 / 50%);
     background-color: #222;
     overflow: hidden;
@@ -79,16 +79,17 @@ h2 {
     color: #bbb;
 }
 
-[data-model="base"] > * {
-    padding: 10px 15px;
+[data-model="base"] > *, base-window > * {
+    padding: 0 6px;
 }
 
-[data-model="base"] > header {
+[data-model="base"] > header, base-window > header {
     display: flex;
     padding-bottom: 3px;
     border-bottom: 1px solid black;
     background-color: rgba(63, 162, 222, 0.15);
     border-bottom: 1px solid rgba(63, 162, 222, 0.2);
+    margin-bottom: 4px;
 }
 
 [data-type="control"] {
@@ -341,4 +342,8 @@ button[data-type="window-setting"]:hover {
     line-height: 17px;
     display: inline-block;
     color: #bbbbbb;
+}
+
+[data-list] {
+    margin-bottom: 2px;
 }

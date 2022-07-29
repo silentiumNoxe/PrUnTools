@@ -22,6 +22,7 @@ class Material {
         return this;
     }
 
+    /** kilograms */
     weight(val) {
         this._weight = val;
         return this;
@@ -563,3 +564,21 @@ export const FF = new Material("FF")
     .name("FTL Fuel")
     .weight(50)
     .volume(0.01)
+
+// ----------------- Gaseous -----------------
+export const O = new Material("O")
+    .name("Oxygen")
+    .weight(1141)
+    .volume(1)
+
+// ----------------- Liquids -----------------
+export const H2O = new Material("H2O")
+    .name("Water")
+    .weight(200)
+    .volume(0.2)
+
+// ----------------- Minerals ----------------
+export const LST = new Material("LST")
+    .name("Limestone")
+    .weight(2730)
+    .volume(1)

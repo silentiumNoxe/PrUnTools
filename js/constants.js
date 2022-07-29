@@ -1,13 +1,13 @@
 export const Production = {
-    Agriculture: 0,
-    Chemistry: 1,
-    Construction: 2,
-    Electronics: 3,
-    FoodIndustries: 4,
-    FuelRefining: 5,
-    Manufacturing: 6,
-    Metallurgy: 7,
-    ResourceExtraction: 8
+    Agriculture: "Agriculture",
+    Chemistry: "Chemistry",
+    Construction: "Construction",
+    Electronics: "Electronics",
+    FoodIndustries: "Food Industries",
+    FuelRefining: "Fuel Refining",
+    Manufacturing: "Manufacturing",
+    Metallurgy: "Metallurgy",
+    ResourceExtraction: "Resource Extraction"
 }
 
 export const Worker = {
