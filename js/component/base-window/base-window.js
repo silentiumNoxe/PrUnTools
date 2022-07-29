@@ -1,5 +1,6 @@
 import BaseService from "../../service/base.js";
 import PlanetService from "../../service/planet.js";
+import * as Planet from "../../planet.js";
 
 const template = `
     <header>
@@ -98,7 +99,9 @@ export default class BaseWindow extends HTMLElement {
         $planetData.append(kv("Fertility", planet.getFertility().toFixed(3)));
 
         for (const res of planet.getResources()) {
-            $planetData.append(kv(res.material.ticker, res.concentration));
+            const extraction = Planet.extractionOne(planet, res.material)
+                .orElseThrow(() => new Error("Undefined resources"));
+            $planetData.append(kv(res.material.ticker, `${extraction.amount} / ${extraction.time.toString()}`));
         }
     }
 
@@ -150,14 +153,12 @@ export default class BaseWindow extends HTMLElement {
     }
 
     connectedCallback() {
-        this.#render()
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === "planet") {
             this.#planet = newValue;
         }
-        console.log("base-window", name, oldValue, newValue);
         this.#render();
     }
 }

@@ -1,6 +1,6 @@
 import {Production, Worker} from "./constants.js";
 import * as Material from "./material.js";
-import Planet from "./planet.js";
+import Planet, {PlanetResource} from "./planet.js";
 
 class Factory {
     _materials = [];
@@ -69,6 +69,23 @@ class Factory {
         this._expert = type;
         return this;
     }
+}
+
+/** @return Factory*/
+export const extractorByType = function (type) {
+    if (type === PlanetResource.TYPE.ATMOSPHERIC) {
+        return COL;
+    }
+
+    if (type === PlanetResource.TYPE.LIQUID) {
+        return RIG;
+    }
+
+    if (type === PlanetResource.TYPE.MINERAL) {
+        return EXT;
+    }
+
+    throw new Error("Unknown type - "+type);
 }
 
 export const COL = new Factory("COL")

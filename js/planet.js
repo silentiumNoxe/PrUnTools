@@ -1,4 +1,7 @@
 import * as Material from "./material.js";
+import * as Recipe from "./recipe.js";
+import * as Factory from "./factory.js";
+import Optional from "./util/optional.js";
 
 export default class Planet {
     static TYPE = {
@@ -66,7 +69,7 @@ export default class Planet {
     }
 }
 
-class PlanetResource {
+export class PlanetResource {
     static TYPE = {
         ATMOSPHERIC: "Atmospheric",
         LIQUID: "Liquid",
@@ -97,8 +100,38 @@ class PlanetResource {
     }
 }
 
-export const dailyExtraction = function (planet) {
+/**
+ * @param planet {Planet}
+ * @param material {Material}
+ * @return Optional<Object>
+ * */
+export const extractionOne = function (planet, material) {
+    let resource;
+    for (const res of planet.getResources()) {
+        if (res.material === material) {
+            resource = res;
+        }
+    }
 
+    if (resource == null) {
+        return Optional.empty();
+    }
+
+    const recipes = Recipe.find(resource.material.ticker)
+        .orElseThrow(() => new Error("Recipe not found - "+resource.material.ticker));
+
+    let recipe;
+    for (const rec of recipes) {
+        if (rec.targetFactory === Factory.extractorByType(resource.type)) {
+            recipe = rec;
+        }
+    }
+
+    if (recipe == null) {
+        Optional.empty();
+    }
+
+    return Optional.of({amount: recipe.getAmount(resource.concentration), time: recipe.duration.toString()})
 }
 
 export const UV796b = new Planet("UV-796b", "Proxion")
@@ -120,6 +153,6 @@ export const JS952c = new Planet("JS-952c", "Gibson")
     .pressure(0.95)
     .resource(new PlanetResource(Material.O, 0.16, PlanetResource.TYPE.ATMOSPHERIC))
     .resource(new PlanetResource(Material.H2O, 0.19, PlanetResource.TYPE.LIQUID))
-    .resource(new PlanetResource(Material.FEO, 0.18, PlanetResource.TYPE.MINERAL))
+    .resource(new PlanetResource(Material.FEO, 0.19, PlanetResource.TYPE.MINERAL))
     .resource(new PlanetResource(Material.H, 0.07, PlanetResource.TYPE.ATMOSPHERIC))
 export const Gibson = JS952c;

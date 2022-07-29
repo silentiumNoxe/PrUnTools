@@ -1,7 +1,7 @@
 import * as Factory from "./factory.js";
 import * as Material from "./material.js";
 import Duration from "./duration.js";
-import {EXT} from "./factory.js";
+import Optional from "./util/optional.js";
 
 class Recipe {
     materials = [];
@@ -45,15 +45,24 @@ class Recipe {
     getAmount(concentration=null) {
         if (this.#natural) {
             if (this.targetFactory === Factory.COL) {
-                return concentration * 100 * 0.6 / 24 * this.duration.getHours();
+                return Math.round(concentration * 100 * 0.6 / 24 * this.duration.getHours());
             }
             if (this.targetFactory === Factory.RIG || this.targetFactory === Factory.EXT) {
-                return concentration * 100 * 0.7 / 24 * this.duration.getHours();
+                return Math.round( concentration * 100 * 0.7 / 24 * this.duration.getHours());
             }
         }
 
         return this.#amount;
     }
+}
+
+/** @return Optional<Array<Recipe>>*/
+export const find = function (ticker) {
+    if (ticker.isBlank()) {
+        throw new Error("Ticker can't be empty");
+    }
+
+    return Optional.ofNullable(this[ticker.toUpperCase()]);
 }
 
 /** @return Recipe */
@@ -311,13 +320,6 @@ export const WAL = [
 ]
 
 // -----------------------Chemicals--------------------------------
-export const SIO = [
-    new Recipe(Material.SIO, 16, "1d")
-        .factory(Factory.CHP)
-        .material(Material.CLI, 10)
-        .material(Material.BRM, 20)
-]
-
 export const BAC = [
     new Recipe(Material.BAC, 10, "2d 5h")
         .factory(Factory.LAB)
@@ -1676,6 +1678,10 @@ export const SIO = [
     new Recipe(Material.SIO, 0, "4h 48m")
         .natural()
         .factory(Factory.RIG),
+    new Recipe(Material.SIO, 16, "1d")
+        .factory(Factory.CHP)
+        .material(Material.CLI, 10)
+        .material(Material.BRM, 20)
 ]
 
 export const TIO = [
