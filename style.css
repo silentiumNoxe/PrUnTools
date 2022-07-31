@@ -371,4 +371,22 @@ button[data-type="window-setting"]:hover {
 
 .kv.edit article:last-child > input, .kv.edit article:last-child > select {
     width: 60%;
+    padding: 0 4px;
+    line-height: 17px;
+    display: inline-block;
+}
+
+.input-data {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 auto;
+    width: 60%;
+}
+
+.input-data > *:first-child {
+    margin-bottom: 4px;
+    padding: 0 4px;
+    line-height: 17px;
+    display: inline-block;
 }

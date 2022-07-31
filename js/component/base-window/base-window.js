@@ -8,6 +8,7 @@ const template = `
         <article>UV-796b [Proxion]</article>
         <div data-type="control">
 <!--                        <button data-action="remove">X</button>-->
+            <button data-action="delete" hidden>&#128465;</button>
             <button class="gear" data-action="edit">&#9881;</button>
             <button data-action="cancel" hidden>x</button>
         </div>
@@ -92,7 +93,7 @@ export default class BaseWindow extends HTMLElement {
         const planet = planetService.getData(this.#planet)
             .orElseThrow(() => new Error(`Planet not found - ${this.#planet}`));
 
-        const $baseWindow = find(this.#planet);
+        const $baseWindow = this;
 
         const $title = this.querySelector("header > article");
         $title.textContent = planet.address + (planet.name ? ` [${planet.name}]` : "");
@@ -110,12 +111,19 @@ export default class BaseWindow extends HTMLElement {
             $baseWindow.removeAttribute("edit");
         })
 
+        const $deleteButton = $baseWindow.querySelector(`header [data-action="delete"]`);
+        $deleteButton.addEventListener("click", () => {
+            deleteBase($baseWindow);
+        });
+
         if (this.#edit) {
             $editButton.innerHTML = "&#10003;";
-            find(this.#planet).querySelector(`header [data-action='cancel']`).hidden = false;
+            $baseWindow.querySelector(`header [data-action='cancel']`).hidden = false;
+            $baseWindow.querySelector(`header [data-action='delete']`).hidden = false;
         } else {
             $editButton.innerHTML = "&#9881;";
-            find(this.#planet).querySelector(`header [data-action='cancel']`).hidden = true;
+            $baseWindow.querySelector(`header [data-action='cancel']`).hidden = true;
+            $baseWindow.querySelector(`header [data-action='delete']`).hidden = true;
         }
     }
 
@@ -146,9 +154,18 @@ export default class BaseWindow extends HTMLElement {
                 true
             ));
             for (const res of planet.getResources()) {
+                const $div = document.createElement("div");
+                $div.classList.add("input-data");
+                $div.innerHTML = `<select>
+                                    <option>Atmospheric</option>
+                                    <option>Liquid</option>
+                                    <option>Mineral</option>
+                                </select>
+                                <input name="${planet.address}.${res.material.ticker}" value="${res.concentration}">`;
+
                 $planetData.append(kv(
                     res.material.ticker,
-                    `<input name="${planet.address}.${res.material.ticker}" value="${res.concentration}">`,
+                    $div,
                     true
                 ))
             }
@@ -262,8 +279,13 @@ const kv = function (key, value, editMode) {
     return $kv;
 }
 
-const find = function (planet) {
+function find (planet) {
     return document.querySelector(`base-window[planet="${planet}"]`);
+}
+
+/** @param $base {BaseWindow}*/
+function deleteBase($base) {
+    $base.remove();
 }
 
 if (!customElements.get("base-window")) {

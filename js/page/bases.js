@@ -22,9 +22,15 @@ function addBase() {
             throw new Error("Planet id or name cannot be empty");
         }
 
-        const windowBase = document.createElement("base-window");
-        windowBase.setAttribute("planet", planet);
-        document.querySelector("[data-list='base']").append(windowBase);
+        setTimeout(() => {
+            if (document.querySelector(`base-window[planet="${planet}"]`)) {
+                throw new Error("Window already exists");
+            }
+
+            const windowBase = document.createElement("base-window");
+            windowBase.setAttribute("planet", planet);
+            document.querySelector("[data-list='base']").append(windowBase);
+        })
     });
 
     document.querySelector(`[data-action="${eventName}"]`)
