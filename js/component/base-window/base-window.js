@@ -7,7 +7,6 @@ const template = `
     <header>
         <article>UV-796b [Proxion]</article>
         <div data-type="control">
-<!--                        <button data-action="remove">X</button>-->
             <button data-action="delete" hidden>&#128465;</button>
             <button class="gear" data-action="edit">&#9881;</button>
             <button data-action="cancel" hidden>x</button>
@@ -88,55 +87,79 @@ export default class BaseWindow extends HTMLElement {
     }
 
     #renderHeader() {
-        const planetService = PlanetService.instance;
-
-        const planet = planetService.getData(this.#planet)
-            .orElseThrow(() => new Error(`Planet not found - ${this.#planet}`));
-
         const $baseWindow = this;
 
-        const $title = this.querySelector("header > article");
-        $title.textContent = planet.address + (planet.name ? ` [${planet.name}]` : "");
-        if (this.#edit) {
-            $title.textContent += " (edit)";
+        function fail(err) {
+            console.error("Error occurred render header;", err);
         }
 
-        const $editButton = $baseWindow.querySelector(`header [data-action='edit']`);
-        $editButton.addEventListener("click", () => {
-            $baseWindow.setAttribute("edit", "");
-        });
+        function renderEdit(planet) {
+            const $title = $baseWindow.querySelector("header > article");
+            $title.textContent = planet.address + (planet.name ? ` [${planet.name}]` : "") + " (edit)";
 
-        const $cancelButton = $baseWindow.querySelector(`header [data-action='cancel']`);
-        $cancelButton.addEventListener("click", () => {
-            $baseWindow.removeAttribute("edit");
-        })
+            const $editButton = $baseWindow.querySelector(`header [data-action='edit']`);
+            $editButton.addEventListener("click", () => {
+                $baseWindow.setAttribute("edit", "");
+            });
 
-        const $deleteButton = $baseWindow.querySelector(`header [data-action="delete"]`);
-        $deleteButton.addEventListener("click", () => {
-            deleteBase($baseWindow);
-        });
+            const $cancelButton = $baseWindow.querySelector(`header [data-action='cancel']`);
+            $cancelButton.addEventListener("click", () => {
+                $baseWindow.removeAttribute("edit");
+            })
 
-        if (this.#edit) {
+            const $deleteButton = $baseWindow.querySelector(`header [data-action="delete"]`);
+            $deleteButton.addEventListener("click", () => {
+                deleteBase($baseWindow);
+            });
+
             $editButton.innerHTML = "&#10003;";
             $baseWindow.querySelector(`header [data-action='cancel']`).hidden = false;
             $baseWindow.querySelector(`header [data-action='delete']`).hidden = false;
-        } else {
+        }
+
+        function renderDefault(planet) {
+            const $title = $baseWindow.querySelector("header > article");
+            $title.textContent = planet.address + (planet.name ? ` [${planet.name}]` : "");
+
+            const $editButton = $baseWindow.querySelector(`header [data-action='edit']`);
+            $editButton.addEventListener("click", () => {
+                $baseWindow.setAttribute("edit", "");
+            });
+
+            const $cancelButton = $baseWindow.querySelector(`header [data-action='cancel']`);
+            $cancelButton.addEventListener("click", () => {
+                $baseWindow.removeAttribute("edit");
+            })
+
+            const $deleteButton = $baseWindow.querySelector(`header [data-action="delete"]`);
+            $deleteButton.addEventListener("click", () => {
+                deleteBase($baseWindow);
+            });
+
             $editButton.innerHTML = "&#9881;";
             $baseWindow.querySelector(`header [data-action='cancel']`).hidden = true;
             $baseWindow.querySelector(`header [data-action='delete']`).hidden = true;
         }
+
+        const planetService = PlanetService.instance;
+
+        planetService.getData(this.#planet)
+            .then(x => x.orElseThrow(() => new Error(`Planet not found: ${this.#planet}`)))
+            .then(x => this.#edit ? renderEdit(x) : renderDefault(x))
+            .catch(fail);
     }
 
     #renderPlanet() {
-        const planetService = PlanetService.instance;
+        const baseWindow = this;
 
-        const planet = planetService.getData(this.#planet)
-            .orElseThrow(() => new Error(`Planet not found - ${this.#planet}`));
-
-        const $planetData = this.querySelector("[data-list='planet']");
+        function fail(err) {
+            console.error("Error occurred render planet data;", err);
+        }
 
         /** @this BaseWindow*/
-        function renderDefault() {
+        function renderDefault(planet) {
+            const $planetData = baseWindow.querySelector("[data-list='planet']");
+
             $planetData.append(kv("Fertility", Math.round(planet.getFertility()*100)+100+"%"));
 
             for (const res of planet.getResources()) {
@@ -147,7 +170,9 @@ export default class BaseWindow extends HTMLElement {
         }
 
         /** @this BaseWindow*/
-        function renderEdit() {
+        function renderEdit(planet) {
+            const $planetData = baseWindow.querySelector("[data-list='planet']");
+
             $planetData.append(kv(
                 "Fertility",
                 `<input name="fertility" value="${planet.getRawFertility()}">`,
@@ -171,19 +196,24 @@ export default class BaseWindow extends HTMLElement {
             }
         }
 
-        if (this.#edit) {
-            renderEdit();
-        } else {
-            renderDefault();
-        }
+        const planetService = PlanetService.instance;
+
+        planetService.getData(this.#planet)
+            .then(x => x.orElseThrow(() => new Error(`Planet not found: ${this.#planet}`)))
+            .then(x => this.#edit ? renderEdit(x) : renderDefault(x))
+            .catch(fail);
     }
 
     #renderCOGC() {
-        const planetService = PlanetService.instance;
+        const $baseWindow = this;
 
-        const $cogc = this.querySelector("[data-list='cogc']");
+        function fail(err) {
+            console.error("Error occurred render planet data;", err);
+        }
 
-        if (this.#edit) {
+        function renderEdit(planet) {
+            const $cogc = $baseWindow.querySelector("[data-list='cogc']");
+
             const $select = document.createElement("select")
             for (const type of Object.values(Production)) {
                 const $option = document.createElement("option");
@@ -196,12 +226,21 @@ export default class BaseWindow extends HTMLElement {
                 $select,
                 true
             ))
-        } else {
-            const program = planetService.getCOGC(this.#planet)
-                .orElseThrow(() => new Error(`Planet not found - ${this.#planet}`));
+        }
 
+        function renderDefault(planet) {
+            const $cogc = $baseWindow.querySelector("[data-list='cogc']");
+
+            const program = planet.getCOGC().orElse(null);
             $cogc.append(kv("Program", program));
         }
+
+        const planetService = PlanetService.instance;
+
+        planetService.getData(this.#planet)
+            .then(x => x.orElseThrow(() => new Error(`Planet not found: ${this.#planet}`)))
+            .then(x => this.#edit ? renderEdit(x) : renderDefault(x))
+            .catch(fail);
     }
 
     #renderWorkers() {
@@ -224,22 +263,38 @@ export default class BaseWindow extends HTMLElement {
     }
 
     #renderFee() {
-        const $feeData = this.querySelector("[data-list='fees'] tbody");
-        const planetService = PlanetService.instance;
-        const fee = planetService.getFee(this.#planet)
-            .orElseThrow(() => `Planet fee not found - ${this.#planet}`);
-        for (const group of Object.keys(fee)) {
-            const $tr = document.createElement("tr");
-            const $name = document.createElement("td");
-            $name.innerText = group;
-            $tr.append($name);
-            for (const worker of Object.keys(fee[group])) {
-                const $td = document.createElement("td");
-                $td.innerText = fee[group][worker];
-                $tr.append($td);
-            }
-            $feeData.append($tr);
+        const $baseWindow = this;
+
+        function fail(err) {
+            console.error("Error occurred render planet data;", err);
         }
+
+        function renderEdit(fee) {
+            renderDefault()
+        }
+
+        function renderDefault(fee) {
+            const $feeData = $baseWindow.querySelector("[data-list='fees'] tbody");
+
+            for (const group of Object.keys(fee)) {
+                const $tr = document.createElement("tr");
+                const $name = document.createElement("td");
+                $name.innerText = group;
+                $tr.append($name);
+                for (const worker of Object.keys(fee[group])) {
+                    const $td = document.createElement("td");
+                    $td.innerText = fee[group][worker];
+                    $tr.append($td);
+                }
+                $feeData.append($tr);
+            }
+        }
+
+        const planetService = PlanetService.instance;
+
+        planetService.getFee(this.#planet)
+            .then(x => this.#edit ? renderEdit(x) : renderDefault(x))
+            .catch(fail);
     }
 
     connectedCallback() {

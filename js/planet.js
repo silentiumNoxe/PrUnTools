@@ -18,6 +18,7 @@ export default class Planet {
     _temperature;
     _fertility;
     #resources = [];
+    #cogc;
 
     constructor(address, name) {
         this.address = address;
@@ -26,6 +27,11 @@ export default class Planet {
 
     type(val) {
         this._type = val;
+        return this;
+    }
+
+    cogc(val) {
+        this.#cogc = val;
         return this;
     }
 
@@ -66,6 +72,11 @@ export default class Planet {
     /** @return Array<PlanetResource>*/
     getResources() {
         return this.#resources;
+    }
+
+    /** @return Optional<string>*/
+    getCOGC() {
+        return Optional.ofNullable(this.#cogc);
     }
 }
 
