@@ -5,14 +5,16 @@ import {EXT} from "./factory.js";
 
 class Recipe {
     materials = [];
-    amount = 0;
+    #amount = 0;
     target = null;
+    /** @type Duration*/
     duration = null;
     targetFactory = null;
+    #natural = false;
 
     constructor(target, amount, duration) {
         this.target = target;
-        this.amount = amount;
+        this.#amount = amount;
         this.duration = new Duration(duration);
     }
 
@@ -33,6 +35,24 @@ class Recipe {
     factory(type) {
         this.targetFactory = type;
         return this;
+    }
+
+    natural() {
+        this.#natural = true;
+        return this;
+    }
+
+    getAmount(concentration=null) {
+        if (this.#natural) {
+            if (this.targetFactory === Factory.COL) {
+                return concentration * 100 * 0.6 / 24 * this.duration.getHours();
+            }
+            if (this.targetFactory === Factory.RIG || this.targetFactory === Factory.EXT) {
+                return concentration * 100 * 0.7 / 24 * this.duration.getHours();
+            }
+        }
+
+        return this.#amount;
     }
 }
 
@@ -1181,120 +1201,159 @@ export const SF = [
 
 // -------------------- Gases ----------------------------
 export const AMM = [
-    new Recipe(Material.AMM, 60, "1d")
+    new Recipe(Material.AMM, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.AMM, 60, "1d")
+    new Recipe(Material.AMM, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.AMM, 60, "1d")
+    new Recipe(Material.AMM, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const AR = [
-    new Recipe(Material.AR, 60, "1d")
+    new Recipe(Material.AR, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.AR, 60, "1d")
+    new Recipe(Material.AR, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.AR, 60, "1d")
+    new Recipe(Material.AR, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const F = [
-    new Recipe(Material.F, 60, "1d")
+    new Recipe(Material.F, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.F, 60, "1d")
+    new Recipe(Material.F, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.F, 60, "1d")
+    new Recipe(Material.F, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const HE = [
-    new Recipe(Material.HE, 60, "1d")
+    new Recipe(Material.HE, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.HE, 60, "1d")
+    new Recipe(Material.HE, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.HE, 60, "1d")
+    new Recipe(Material.HE, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const HE3 = [
-    new Recipe(Material.HE3, 60, "1d")
+    new Recipe(Material.HE3, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.HE3, 60, "1d")
+    new Recipe(Material.HE3, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.HE3, 60, "1d")
+    new Recipe(Material.HE3, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const H = [
-    new Recipe(Material.H, 60, "1d")
+    new Recipe(Material.H, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.H, 60, "1d")
+    new Recipe(Material.H, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.H, 60, "1d")
+    new Recipe(Material.H, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const NE = [
-    new Recipe(Material.NE, 60, "1d")
+    new Recipe(Material.NE, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.NE, 60, "1d")
+    new Recipe(Material.NE, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.NE, 60, "1d")
+    new Recipe(Material.NE, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const N = [
-    new Recipe(Material.N, 60, "1d")
+    new Recipe(Material.N, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.N, 60, "1d")
+    new Recipe(Material.N, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.N, 60, "1d")
+    new Recipe(Material.N, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const O = [
-    new Recipe(Material.O, 60, "1d")
+    new Recipe(Material.O, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.O, 60, "1d")
+    new Recipe(Material.O, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.O, 60, "1d")
+    new Recipe(Material.O, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 // --------------------- Liquids -------------------
 export const HEX = [
-    new Recipe(Material.HEX, 70, "1d")
+    new Recipe(Material.HEX, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.HEX, 70, "1d")
+    new Recipe(Material.HEX, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.HEX, 70, "1d")
+    new Recipe(Material.HEX, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const LES = [
-    new Recipe(Material.LES, 70, "1d")
+    new Recipe(Material.LES, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.LES, 70, "1d")
+    new Recipe(Material.LES, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.LES, 70, "1d")
+    new Recipe(Material.LES, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const BTS = [
-    new Recipe(Material.BTS, 70, "1d")
+    new Recipe(Material.BTS, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.BTS, 70, "1d")
+    new Recipe(Material.BTS, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.BTS, 70, "1d")
+    new Recipe(Material.BTS, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const H2O = [
-    new Recipe(Material.H2O, 70, "1d")
+    new Recipe(Material.H2O, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.H2O, 70, "1d")
+    new Recipe(Material.H2O, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.H2O, 70, "1d")
+    new Recipe(Material.H2O, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
@@ -1393,192 +1452,255 @@ export const W = [
 
 // -------------------- Minerals ---------------------
 export const BER = [
-    new Recipe(Material.BER, 70, "1d")
+    new Recipe(Material.BER, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.BER, 70, "1d")
+    new Recipe(Material.BER, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.BER, 70, "1d")
+    new Recipe(Material.BER, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const BRM = [
-    new Recipe(Material.BRM, 70, "1d")
+    new Recipe(Material.BRM, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.BRM, 70, "1d")
+    new Recipe(Material.BRM, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.BRM, 70, "1d")
+    new Recipe(Material.BRM, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const BOR = [
-    new Recipe(Material.BOR, 70, "1d")
+    new Recipe(Material.BOR, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.BOR, 70, "1d")
+    new Recipe(Material.BOR, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.BOR, 70, "1d")
+    new Recipe(Material.BOR, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const CLI = [
-    new Recipe(Material.CLI, 70, "1d")
+    new Recipe(Material.CLI, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.CLI, 70, "1d")
+    new Recipe(Material.CLI, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.CLI, 70, "1d")
+    new Recipe(Material.CLI, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const GAL = [
-    new Recipe(Material.GAL, 70, "1d")
+    new Recipe(Material.GAL, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.GAL, 70, "1d")
+    new Recipe(Material.GAL, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.GAL, 70, "1d")
+    new Recipe(Material.GAL, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const HAL = [
-    new Recipe(Material.HAL, 70, "1d")
+    new Recipe(Material.HAL, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.HAL, 70, "1d")
+    new Recipe(Material.HAL, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.HAL, 70, "1d")
+    new Recipe(Material.HAL, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const LST = [
-    new Recipe(Material.LST, 70, "1d")
+    new Recipe(Material.LST, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.LST, 70, "1d")
+    new Recipe(Material.LST, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.LST, 70, "1d")
+    new Recipe(Material.LST, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const MGS = [
-    new Recipe(Material.MGS, 70, "1d")
+    new Recipe(Material.MGS, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.MGS, 70, "1d")
+    new Recipe(Material.MGS, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.MGS, 70, "1d")
+    new Recipe(Material.MGS, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const MAG = [
-    new Recipe(Material.MAG, 70, "1d")
+    new Recipe(Material.MAG, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.MAG, 70, "1d")
+    new Recipe(Material.MAG, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.MAG, 70, "1d")
+    new Recipe(Material.MAG, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const SCR = [
-    new Recipe(Material.SCR, 70, "1d")
+    new Recipe(Material.SCR, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.SCR, 70, "1d")
+    new Recipe(Material.SCR, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.SCR, 70, "1d")
+    new Recipe(Material.SCR, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const TAI = [
-    new Recipe(Material.TAI, 70, "1d")
+    new Recipe(Material.TAI, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.TAI, 70, "1d")
+    new Recipe(Material.TAI, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.TAI, 70, "1d")
+    new Recipe(Material.TAI, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const TCO = [
-    new Recipe(Material.TCO, 70, "1d")
+    new Recipe(Material.TCO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.TCO, 70, "1d")
+    new Recipe(Material.TCO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.TCO, 70, "1d")
+    new Recipe(Material.TCO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const TS = [
-    new Recipe(Material.TS, 70, "1d")
+    new Recipe(Material.TS, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.TS, 70, "1d")
+    new Recipe(Material.TS, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.TS, 70, "1d")
+    new Recipe(Material.TS, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const ZIR = [
-    new Recipe(Material.ZIR, 70, "1d")
+    new Recipe(Material.ZIR, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.ZIR, 70, "1d")
+    new Recipe(Material.ZIR, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.ZIR, 70, "1d")
+    new Recipe(Material.ZIR, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 // --------------------- Ores -----------------------
 export const ALO = [
-    new Recipe(Material.ALO, 70, "1d")
+    new Recipe(Material.ALO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.ALO, 70, "1d")
+    new Recipe(Material.ALO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.ALO, 70, "1d")
+    new Recipe(Material.ALO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const CUO = [
-    new Recipe(Material.CUO, 70, "1d")
+    new Recipe(Material.CUO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.CUO, 70, "1d")
+    new Recipe(Material.CUO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.CUO, 70, "1d")
+    new Recipe(Material.CUO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const AUO = [
-    new Recipe(Material.AUO, 70, "1d")
+    new Recipe(Material.AUO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.AUO, 70, "1d")
+    new Recipe(Material.AUO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.AUO, 70, "1d")
+    new Recipe(Material.AUO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const FEO = [
-    new Recipe(Material.FEO, 70, "1d")
+    new Recipe(Material.FEO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.FEO, 70, "1d")
+    new Recipe(Material.FEO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.FEO, 70, "1d")
+    new Recipe(Material.FEO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const LIO = [
-    new Recipe(Material.LIO, 70, "1d")
+    new Recipe(Material.LIO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.LIO, 70, "1d")
+    new Recipe(Material.LIO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.LIO, 70, "1d")
+    new Recipe(Material.LIO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const SIO = [
-    new Recipe(Material.SIO, 70, "1d")
+    new Recipe(Material.SIO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.SIO, 70, "1d")
+    new Recipe(Material.SIO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.SIO, 70, "1d")
+    new Recipe(Material.SIO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
 export const TIO = [
-    new Recipe(Material.TIO, 70, "1d")
+    new Recipe(Material.TIO, 0, "6h")
+        .natural()
         .factory(Factory.COL),
-    new Recipe(Material.TIO, 70, "1d")
+    new Recipe(Material.TIO, 0, "12h")
+        .natural()
         .factory(Factory.EXT),
-    new Recipe(Material.TIO, 70, "1d")
+    new Recipe(Material.TIO, 0, "4h 48m")
+        .natural()
         .factory(Factory.RIG),
 ]
 
