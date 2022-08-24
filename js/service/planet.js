@@ -80,6 +80,10 @@ export default class PlanetService {
         return new Promise((resolve, reject) => {
             db.getItem(id)
                 .then(values => {
+                    if (values == null) {
+                        resolve([]);
+                    }
+
                     const list = [];
                     for (const data of values) {
                         list.push(new PlanetFee(data.type, data.values));

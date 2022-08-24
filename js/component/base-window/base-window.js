@@ -34,19 +34,6 @@ const template = `
     </div>
     <div data-list="fees">
         <h2>Fees</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>PIO</th>
-                    <th>SET</th>
-                    <th>TEC</th>
-                    <th>ENG</th>
-                    <th>SCI</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
     </div>
 `;
 
@@ -232,7 +219,7 @@ export default class BaseWindow extends HTMLElement {
             const $cogc = $baseWindow.querySelector("[data-list='cogc']");
 
             const program = planet.getCOGC().orElse(null);
-            $cogc.append(kv("Program", program));
+            $cogc.append(kv("Program", program || "Undefined"));
         }
 
         const planetService = PlanetService.instance;
@@ -270,11 +257,25 @@ export default class BaseWindow extends HTMLElement {
         }
 
         function renderEdit(fee) {
-            renderDefault()
+            
         }
 
         function renderDefault(fee) {
-            const $feeData = $baseWindow.querySelector("[data-list='fees'] tbody");
+            const $table = document.createElement("table");
+            const $thead = document.createElement("thead");
+            $thead.innerHTML = `<tr>
+                    <th></th>
+                    <th>PIO</th>
+                    <th>SET</th>
+                    <th>TEC</th>
+                    <th>ENG</th>
+                    <th>SCI</th>
+                </tr>`;
+
+            $table.append($thead);
+
+            const $tbody = document.createElement("tbody");
+            $table.append($tbody);
 
             for (const group of Object.keys(fee)) {
                 const $tr = document.createElement("tr");
@@ -286,8 +287,10 @@ export default class BaseWindow extends HTMLElement {
                     $td.innerText = fee[group][worker];
                     $tr.append($td);
                 }
-                $feeData.append($tr);
+                $tbody.append($tr);
             }
+
+            $baseWindow.querySelector("[data-list='fees']").append($table);
         }
 
         const planetService = PlanetService.instance;

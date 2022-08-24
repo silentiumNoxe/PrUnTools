@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Constructions</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.js"></script>
+
+  <script src="js/util/commons.js"></script>
+  <script async src="js/page/construction.js"></script>
+  <script async src="js/util/registrator.js"></script>
+</head>
+<body>
+<div data-list="page">
+  <div class="logo"></div>
+  <button class="selected">SCRNS</button>
+  <button>SDBR</button>
+  <button class="selected">BFRS</button>
+  <br>
+  <a href="bases.html">BS</a>
+  <a href="construction.html" class="selected">CONST</a>
+</div>
+<div class="main-container">
+  <div data-list="top-control">
+    <div class="flex">
+      <div data-type="current-page" style="width: 10vw">
+        <span>SCRN:</span>
+        <strong>BASES</strong>
+      </div>
+      <button data-action="add">Add</button>
+    </div>
+    <div class="flex">
+      <button data-action="help">Help</button>
+      <button data-action="logout">Logout</button>
+    </div>
+  </div>
+  <div style="margin: 4px">
+  </div>
+  <div data-list="bottom-control">
+    <button data-action="create-buffer">NEW BFR</button>
+  </div>
+</div>
+</body>
+</html>
