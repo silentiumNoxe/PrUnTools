@@ -283,11 +283,6 @@ export const MGC = new Material("MGC")
     .weight(600)
     .volume(0.9)
 
-export const HSE = new Material("HSE")
-    .name("Hardened Structural Elements")
-    .weight(3100)
-    .volume(0.7)
-
 export const TSH = new Material("TSH")
     .name("Thermal Shielding")
     .weight(2400)

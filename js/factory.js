@@ -3,20 +3,25 @@ import * as Material from "./material.js";
 import Planet from "./planet.js";
 
 class Factory {
-    _materials = [];
-    _workforce = [];
+    #materials = [];
+    #workforce = [];
+    #expert;
+    #area;
+    #name;
+
+    ticker;
 
     constructor(ticker) {
-        this._ticker = ticker;
+        this.ticker = ticker;
     }
 
     /** @param planet {Planet} */
     getMaterials(planet=null) {
         if (!planet) {
-            return this._materials;
+            return this.#materials;
         }
 
-        const array = [...this._materials];
+        const array = [...this.#materials];
 
         if (planet.type === Planet.TYPE.ROCKY) {
             array.push({type: Material.MCG, amount: this._area * 4})
@@ -46,28 +51,44 @@ class Factory {
     }
 
     name(val) {
-        this._name = val;
+        this.#name = val;
         return this;
     }
 
     material(type, amount) {
-        this._materials.push({type, amount})
+        this.#materials.push({type, amount})
         return this;
     }
 
     area(val) {
-        this._area = val;
+        this.#area = val;
         return this;
     }
 
     workforce(type, amount) {
-        this._workforce.push({type, amount});
+        this.#workforce.push({type, amount});
         return this;
     }
 
     expert(type) {
-        this._expert = type;
+        this.#expert = type;
         return this;
+    }
+
+    getWorkforce() {
+        return this.#workforce;
+    }
+
+    getExpert() {
+        return this.#expert;
+    }
+
+    getArea() {
+        return this.#area;
+    }
+
+    getName() {
+        return this.#name;
     }
 }
 
