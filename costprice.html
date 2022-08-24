@@ -47,6 +47,13 @@
         border: 1px solid black;
     }
 
+    fieldset > legend {
+        background-color: black;
+        color: white;
+        padding: 3px;
+        font-size: 0.8em;
+    }
+
     #data > * {
         display: block;
         margin-bottom: 10px;
@@ -81,6 +88,37 @@
         position: absolute;
         margin-left: var(--left-width);
     }
+
+    .right > * {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    [data-type="factory"] {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    [data-type="factory"] > * {
+        margin-right: 8px;
+        margin-bottom: 4px;
+    }
+
+    .kv {
+        display: inline-block;
+    }
+
+    .kv > .key {
+        margin-right: 10px;
+    }
+
+    .recipe {
+        min-width: 150px;
+    }
+
+    .recipe > * {
+        display: block;
+    }
   </style>
 </head>
 <body>
@@ -88,8 +126,21 @@
   <h2>Cost Price</h2>
   <div id="data">
     <label>
+      <b>Planet</b>
+      <input data-type="selected-planet" placeholder="example: UV-796b">
+    </label>
+    <label>
       <b>Factory</b>
       <input data-type="selected-factory" placeholder="example: FRM">
+    </label>
+    <label>
+      <b>Time</b>
+      <select data-type="selected-time-format">
+        <option value="d">Days</option>
+        <option value="h">Hours</option>
+        <option value="m">Minutes</option>
+        <option value="s">Seconds</option>
+      </select>
     </label>
     <details>
       <summary>Workforce</summary>

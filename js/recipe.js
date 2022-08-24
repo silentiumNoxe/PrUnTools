@@ -47,6 +47,27 @@ export const faster = function (recipe) {
     return found;
 }
 
+/** @return Array<Recipe> */
+export const findByFactory = function (ticker) {
+    const arr = [];
+    for (const key of Object.keys(this)) {
+        const recipes = this[key];
+        if (!(recipes instanceof Array)) {
+            continue;
+        }
+
+        for (const recipe of recipes) {
+            if (recipe.targetFactory && recipe.targetFactory.ticker === ticker) {
+                arr.push(recipe);
+            }
+        }
+    }
+
+    console.log(arr);
+
+    return arr;
+}
+
 // ----------------------Agricultural Products------------------------
 export const FOD = [
     new Recipe(Material.FOD, 16, "12h")
@@ -291,13 +312,6 @@ export const WAL = [
 ]
 
 // -----------------------Chemicals--------------------------------
-export const SIO = [
-    new Recipe(Material.SIO, 16, "1d")
-        .factory(Factory.CHP)
-        .material(Material.CLI, 10)
-        .material(Material.BRM, 20)
-]
-
 export const BAC = [
     new Recipe(Material.BAC, 10, "2d 5h")
         .factory(Factory.LAB)

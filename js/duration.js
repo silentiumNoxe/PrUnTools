@@ -87,6 +87,17 @@ export default class Duration {
         return this.getHours() / 24;
     }
 
+    getInFormat(format) {
+        switch (format) {
+            case "s": return this.getSeconds();
+            case "m": return this.getMinutes();
+            case "h": return this.getHours();
+            case "d": return this.getDays();
+        }
+
+        throw new Error(`Unknown time format ${format}. Supported s m h d`);
+    }
+
     /**
      * @param x {Duration}
      * @return boolean
