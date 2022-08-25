@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Cost Price</title>
 
-  <script async type="module" src="js/page/costprice.js"></script>
+  <script async type="module" src="js/page/module/costprice.js"></script>
+  <script async src="js/page/costprice.js"></script>
 
   <style>
     :root {
@@ -142,6 +143,12 @@
         <option value="s">Seconds</option>
       </select>
     </label>
+    <label>
+      <b>Exchange</b>
+      <select data-type="selected-exchange">
+        <option value="CI1">Benten</option>
+      </select>
+    </label>
     <details>
       <summary>Workforce</summary>
       <div class="form" data-container="workforce-form">
@@ -216,6 +223,20 @@
           <input type="number" data-type="fee-scientists">
         </label>
       </div>
+    </details>
+    <details>
+      <summary>Set Ask Price</summary>
+      <label>
+        <b>Ticker</b>
+        <input data-type="ask-price-ticker">
+      </label>
+      <br>
+      <label>
+        <b>Price</b>
+        <input type="number" step="0.01" data-type="ask-price-value">
+      </label>
+      <br>
+      <button onclick="savePrice()">Accept</button>
     </details>
   </div>
 </div>

@@ -553,3 +553,10 @@ export const FF = new Material("FF")
     .name("FTL Fuel")
     .weight(50)
     .volume(0.01)
+
+// ------------------- Liquids ------------------
+
+export const H2O = new Material("H2O")
+    .name("Water")
+    .weight(200)
+    .volume(0.2)
