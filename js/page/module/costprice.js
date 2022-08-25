@@ -1,5 +1,7 @@
 import * as Factory from "../../factory.js";
 import * as Recipe from "../../recipe.js";
+import * as Workforce from "../../workforce.js";
+import RecipeView from "../../component/RecipeView.js";
 
 (function () {
     document.querySelector("[data-type='selected-factory']")
@@ -66,7 +68,8 @@ function drawFactory() {
     const $factory = document.querySelector(".right > [data-type='factory']");
 
     for (const recipe of Recipe.findByFactory(factoryTicker)) {
-        $factory.append(drawRecipe(recipe));
+        $factory.append(new RecipeView(recipe).render());
+        // $factory.append(drawRecipe(recipe));
     }
 }
 
@@ -79,25 +82,69 @@ function drawRecipe(recipe) {
 
     const $fieldset = document.createElement("fieldset");
     $fieldset.classList.add("recipe");
-    $fieldset.innerHTML = `<legend>${recipe.target.ticker}</legend>`;
+    $fieldset.innerHTML = `<legend>${recipe.target == null ? "???" : recipe.target.ticker}</legend>`;
 
     $fieldset.append(drawKV(`Time (${timeFormat})`, recipe.duration.getInFormat(timeFormat).toFixed(2)));
     $fieldset.append(drawKV("Result", recipe.getAmount()));
 
+    $fieldset.append(drawKV("Cost Price", costprice(recipe).toFixed(2)));
+
     $fieldset.append(document.createElement("hr"));
 
-    for (const mat of recipe.materials) {
-        if (!mat.type) {
-            continue;
-        }
-        const $b = document.createElement("span")
+    const $bottom = document.createElement("div");
+    $bottom.classList.add("bottom");
+    $fieldset.append($bottom);
 
-
-        $b.innerHTML = `<b>${mat.type.ticker}</b> - ${mat.amount} (price) `;
-        $fieldset.append($b);
-    }
+    $bottom.append(amountTable(recipe));
 
     return $fieldset;
+}
+
+/**
+ * @param recipe {Recipe}
+ * @return HTMLElement
+ * */
+function amountTable(recipe) {
+    const $amount = document.createElement("div");
+    const $table = document.createElement("table");
+    $amount.append($table);
+
+    const $head = document.createElement("tr");
+    $head.innerHTML = "<th>Ticker</th><th>Amount</th><th>Price</th><th>Sum</th>";
+    $table.append($head);
+
+    const materials = recipe.materials;
+
+    for (const workforce of recipe.targetFactory.getWorkforce()) {
+        const worker = Workforce[workforce.type];
+        if (worker == null) {
+            console.warn("no worker data", workforce.type);
+            continue;
+        }
+
+        for (const material of worker.getMaterials()) {
+            const type = material.material;
+            const amount = material.amount * workforce.amount;
+
+            const x = materials.find(x => x.type === type);
+            if (x != null) {
+                x.amount += amount;
+            } else {
+                materials.push({type, amount});
+            }
+        }
+    }
+
+    for (const mat of materials) {
+        const ticker = mat.type == null ? "???" : mat.type.ticker.toUpperCase();
+        const price = JSON.parse(localStorage.getItem(`price-${ticker}`) || "{}").ask || 0;
+
+        const $row = document.createElement("tr");
+        $row.innerHTML = `<td>${ticker}</td><td>${mat.amount}</td><td>${price}</td><td>${(mat.amount * price).toFixed(2)}</td>`;
+        $table.append($row);
+    }
+
+    return $amount;
 }
 
 /** @return HTMLElement*/
@@ -127,6 +174,44 @@ function drawKV(key, value) {
     }
 
     return $div;
+}
+
+/** @param recipe {Recipe}*/
+function costprice(recipe) {
+    const materials = recipe.materials;
+
+    for (const workforce of recipe.targetFactory.getWorkforce()) {
+        const worker = Workforce[workforce.type];
+        if (worker == null) {
+            console.warn("no worker data", workforce.type);
+            continue;
+        }
+
+        for (const material of worker.getMaterials()) {
+            const type = material.material;
+            const amount = material.amount * workforce.amount;
+
+            const x = materials.find(x => x.type === type);
+            if (x != null) {
+                x.amount += amount;
+            } else {
+                materials.push({type, amount});
+            }
+        }
+    }
+
+    let sum = 0;
+
+    for (const mat of materials) {
+        if (!mat.type) {
+            continue;
+        }
+
+        const price = JSON.parse(localStorage.getItem(`price-${mat.type.ticker}`) || "{}").ask || 0;
+        sum += price * mat.amount;
+    }
+
+    return sum / recipe.getAmount();
 }
 
 function drawWarnNoFactory(search) {

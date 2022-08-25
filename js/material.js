@@ -3,6 +3,7 @@ import {Production} from "./constants.js";
 class Material {
     _natural = false;
     _volume = 1;
+    #consumable = false;
 
     constructor(ticker) {
         this.ticker = ticker;
@@ -34,6 +35,17 @@ class Material {
     natural(val) {
         this._natural = val;
         return this;
+    }
+
+    /** @param val {boolean}*/
+    consumable(val) {
+        this.#consumable = val;
+        return this;
+    }
+
+    /** @return {boolean}*/
+    isConsumable() {
+        return this.#consumable;
     }
 }
 
@@ -478,74 +490,101 @@ export const WAL = new Material("WAL")
 // ------------------- Consumables (basic) --------------------
 
 export const DW = new Material("DW")
+    .consumable(true)
     .name("Drinking Water")
     .weight(100)
     .volume(0.1)
 
 export const HSS = new Material("HSS")
+    .consumable(true)
     .name("Smart Space Suit")
     .weight(50)
     .volume(0.05)
 
 export const FIM = new Material("FIM")
+    .consumable(true)
     .name("Flavoured Insta-Meal")
     .weight(550)
     .volume(0.5)
 
 export const PDA = new Material("PDA")
+    .consumable(true)
     .name("Personal Data Assistant")
     .weight(2)
     .volume(0.002)
 
 export const OVE = new Material("OVE")
+    .consumable(true)
     .name("Basic Overalls")
     .weight(20)
     .volume(0.025)
 
 export const RAT = new Material("RAT")
+    .consumable(true)
     .name("Basic Rations")
     .weight(210)
     .volume(0.1)
 
 export const LC = new Material("LC")
+    .consumable(true)
     .name("AI-Assisted Lab Coat")
     .weight(50)
     .volume(0.05)
 
 export const MEA = new Material("MEA")
+    .consumable(true)
     .name("Quality Meat Meal")
     .weight(600)
     .volume(0.5)
 
 export const WS = new Material("WS")
+    .consumable(true)
     .name("Scientific Work Station")
     .weight(50)
     .volume(0.5)
 
 export const EXO = new Material("EXO")
+    .consumable(true)
     .name("Exoskeleton Work Suit")
     .weight(100)
     .volume(0.05)
 
 export const PT = new Material("PT")
+    .consumable(true)
     .name("Power Tools")
     .weight(250)
     .volume(0.2)
 
 export const HMS = new Material("HMS")
+    .consumable(true)
     .name("HazMat Work Suit")
     .weight(50)
     .volume(0.05)
 
 export const MED = new Material("MED")
+    .consumable(true)
     .name("Basic Medical Kit")
     .weight(300)
     .volume(0.1)
 
 export const SCN = new Material("SCN")
+    .consumable(true)
     .name("Multi-Purpose Scanner")
     .weight(1)
     .volume(0.0001)
+
+// ---------- Consumable (luxury) ---------------
+export const COF = new Material("COF")
+    .consumable(true)
+    .name("Caffeinated Infusion")
+    .weight(100)
+    .volume(0.1)
+
+export const PWO = new Material("PWO")
+    .consumable(true)
+    .name("Padded Work Overall")
+    .weight(50)
+    .volume(0.05)
 
 // ------------------- Fuels --------------------
 

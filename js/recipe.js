@@ -9,6 +9,7 @@ class Recipe {
     target = null;
     /** @type Duration*/
     duration = null;
+    /** @type Factory*/
     targetFactory = null;
     #natural = false;
 
@@ -82,8 +83,6 @@ export const findByFactory = function (ticker) {
             }
         }
     }
-
-    console.log(arr);
 
     return arr;
 }

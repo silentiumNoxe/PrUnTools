@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Cost Price</title>
 
+  <script src="js/util.js"></script>
+
   <script async type="module" src="js/page/module/costprice.js"></script>
   <script async src="js/page/costprice.js"></script>
 
@@ -55,6 +57,14 @@
         font-size: 0.8em;
     }
 
+    table {
+        font-size: 0.9em;
+    }
+
+    td, th {
+        padding: 2px 6px;
+    }
+
     #data > * {
         display: block;
         margin-bottom: 10px;
@@ -66,8 +76,9 @@
     }
 
     .left {
-        position: absolute;
+        position: fixed;
         width: var(--left-width);
+        top: 0;
 
         height: 100%;
 
@@ -86,13 +97,14 @@
     }
 
     .right {
-        position: absolute;
+        position: relative;
         margin-left: var(--left-width);
     }
 
     .right > * {
         margin-left: 20px;
-        margin-top: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     [data-type="factory"] {
@@ -102,23 +114,28 @@
 
     [data-type="factory"] > * {
         margin-right: 8px;
-        margin-bottom: 4px;
-    }
-
-    .kv {
-        display: inline-block;
-    }
-
-    .kv > .key {
-        margin-right: 10px;
+        margin-top: 10px;
     }
 
     .recipe {
-        min-width: 150px;
+        min-width: 200px;
     }
 
     .recipe > * {
         display: block;
+    }
+
+    fieldset > .bottom table {
+        font-weight: 300;
+        font-size: 0.8em;
+    }
+
+    .kv {
+        display: flex;
+    }
+
+    .value {
+        margin-left: auto;
     }
   </style>
 </head>
@@ -242,9 +259,6 @@
 </div>
 <div class="right">
   <div data-type="factory">
-    <fielset>
-      <legend></legend>
-    </fielset>
   </div>
 </div>
 </body>
