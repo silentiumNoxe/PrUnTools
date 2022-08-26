@@ -49,6 +49,16 @@ import RecipeView from "../../component/RecipeView.js";
         localStorage.setItem("time-format", this.options[this.selectedIndex].value);
         drawFactory();
     })
+
+    document.querySelector("[data-type='markup']").addEventListener("keydown", function (event) {
+        if (this.value.length === 0) {
+            return;
+        }
+
+        if (event.code === "Enter") {
+            localStorage.setItem("markup", this.value);
+        }
+    });
 })();
 
 function clear() {

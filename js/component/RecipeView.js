@@ -12,7 +12,14 @@ export default class RecipeView {
 
     getTime() {
         const format = localStorage.getItem("time-format") || "h";
-        return this.#recipe.duration.getInFormat(format);
+        let time = this.#recipe.duration.getInFormat(format);
+
+        const workforce = JSON.parse(localStorage.getItem("workforce") || "{}");
+        if (workforce.pio != null) {
+
+        }
+
+        return time;
     }
 
     getTargetTicker() {
@@ -132,7 +139,13 @@ function drawExpenses($view) {
 function drawCostPrice($view) {
     $view.append(document.create("br"));
 
-    $view.append(drawKV("Cost price", this.getCostPrice().toFixed(2)));
+    const costPrice = this.getCostPrice();
+    $view.append(drawKV("Cost price", costPrice.toFixed(2)));
+
+    const markup = localStorage.getItem("markup") || 0;
+    if (markup > 0) {
+        $view.append(drawKV("Markup", (costPrice + costPrice * (markup / 100)).toFixed(2)));
+    }
 }
 
 /** @this RecipeView*/
